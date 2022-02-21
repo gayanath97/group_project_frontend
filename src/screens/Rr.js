@@ -10,7 +10,7 @@ const Rr = () => {
 
     <div >
        <Header />
-       {/* <div style={{overflowY:"scroll"}}> */}
+      
        <br />
        <h1>Reward & Recognitions</h1>
        <br />
@@ -20,7 +20,7 @@ const Rr = () => {
        <Button variant="info"><Link to='/addrrbill'>Add a bill</Link></Button>
        
        <RrbillDetails />
-       {/* </div> */}
+       
        <br />
        <Footer />
 
