@@ -3,7 +3,7 @@ import axios from "axios";
 const EXPENSE_BASE_REST_API_URL = 'http://localhost:8080/expense/';
 
 
-class ExpenseService{
+class ExpensesService{
 
 
    getAllExpenses(){
@@ -26,8 +26,5 @@ class ExpenseService{
        return axios.delete(EXPENSE_BASE_REST_API_URL+expenseId);
    }
 
-
-
-
-
 }
+export default new ExpensesService;

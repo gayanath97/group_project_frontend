@@ -3,37 +3,36 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import ExpenseBillService from "../services/ExpenseBillService";
+import OpdBillService from "../services/OpdBillService";
 import axios from "axios";
 
-
-const ExpensebillForm = () => {
-
-   const[particulars,setparticulars] = useState("");
-   const[amount,setamount] = useState("");
-   const[sta_tus,setsta_tus] = useState("");
-   const[extensionNo,setextensionNo] = useState("");
+const OpdbillForm = () => {
 
    const [file, setfile] = useState(null);
 
    const navigate = useNavigate();
    const {id} = useParams();
 
+   const[amount,setamount] = useState("");
+   const[particulars,setparticulars] = useState("");
+   const[date,setdate] = useState("");
+   const[sta_tus,setsta_tus] = useState("");
 
-   const saveOrUpdateExpenseBill = (e) => {
+
+   const saveOrUpdateOpdBill = (e) => {
 
 
     e.preventDefault();
-    const expenseBill = {extensionNo,particulars, amount, sta_tus}
+    const opdBill = {amount,particulars,date,sta_tus}
     
 
     if(id){
-         ExpenseBillService.updateExpenseBill(expenseBill,id)
+         OpdBillService.updateOpdBill(opdBill,id)
         .then(
             (response) => {
 
             console.log(response.data)    
-            navigate('/expense')
+            navigate('/opd')
         }
         )
         .catch(
@@ -43,14 +42,14 @@ const ExpensebillForm = () => {
         )
 
     }else{
-     ExpenseBillService.createExpenseBill(expenseBill)
+     OpdBillService.createOpdBill(opdBill)
         .then(
             (response) =>{
             
                 console.log("hey")
             console.log(response.data)
 
-            navigate('/expense');
+            navigate('/opd');
 
         }
         )
@@ -64,14 +63,14 @@ const ExpensebillForm = () => {
 
     useEffect(() => {
        
-        ExpenseBillService.getExpenseBillById(id)
+        OpdBillService.getOpdBillById(id)
                .then(
                    (response)=>{
                        console.log(response.data.payload[0]);
                        
-                       setextensionNo(response.data.payload[0].extensionNo)
-                       setparticulars(response.data.payload[0].particulars)
                        setamount(response.data.payload[0].amount)
+                       setparticulars(response.data.payload[0].particulars)
+                       setdate(response.data.payload[0].date)
                        setsta_tus(response.data.payload[0].sta_tus)
                     
                    }
@@ -85,22 +84,13 @@ const ExpensebillForm = () => {
               
            
        }, [])
-
-    const title = ()=>{
-        if(id){
-                return <h2 >Update Expense Bill</h2>
-        }else{
-               return <h2>Add Expense Bill</h2>
-        }
-      }
-
-     const handleFileSelect = (event) =>{
+    const handleFileSelect = (event) =>{
 
         setfile(event.target.files[0])
 
       }
-
-      const handleSubmit = (event) =>{
+    
+    const handleSubmit = (event) =>{
          
         event.preventDefault()
         const formData = new FormData();
@@ -108,7 +98,7 @@ const ExpensebillForm = () => {
         console.log(formData);
         console.log('test1');
         try {
-          const response = axios.post("http://localhost:8080/upload-expense-bill",
+          const response = axios.post("http://localhost:8080/upload-opd-bill",
           
           formData
           )
@@ -121,27 +111,35 @@ const ExpensebillForm = () => {
 
       }
 
+    const title = ()=>{
+        if(id){
+                return <h2 >Update Opd Bill</h2>
+        }else{
+               return <h2>Add Opd Bill</h2>
+        }
+      }
     return ( 
+        
 
         <div>
+          
+          {title()}
 
-             {title()}
+          <form>
 
-              <form>
-
-              <div>
-                                 <label > ExtensionNo :</label>
+          <div>
+                                 <label > Amount :</label>
                                  <input
                                      type = "text"
-                                     placeholder = "Enter extensionNo"
-                                     name = "extensionNo"
-                                     value = {extensionNo}
-                                     onChange = {(e) => setextensionNo(e.target.value)}
+                                     placeholder = "Enter amount"
+                                     name = "amount"
+                                     value = {amount}
+                                     onChange = {(e) => setamount(e.target.value)}
                                  >
                                  </input>
              </div>
 
-              <div>
+             <div>
                                  <label > Particulars :</label>
                                  <input
                                      type = "text"
@@ -154,39 +152,40 @@ const ExpensebillForm = () => {
              </div>
 
              <div>
-                                 <label > Amount :</label>
+                                 <label > Date :</label>
                                  <input
-                                     type = "text"
-                                     placeholder = "Enter amount"
-                                     name = "amount"
-                                     value = {amount}
-                                     onChange = {(e) => setamount(e.target.value)}
+                                     type = "date"
+                                     placeholder = "Enter date"
+                                     name = "date"
+                                     value = {date}
+                                     onChange = {(e) => setdate(e.target.value)}
                                  >
                                  </input>
              </div>
+
              <div>
              <input type="file" onChange={handleFileSelect}/>
              </div>
              <br / >
              <br / >
-        
+
              <div>
              <Button onClick={
                  (e)=>{
-                     saveOrUpdateExpenseBill(e);
+                     saveOrUpdateOpdBill(e);
                      handleSubmit(e);
                     }
                  } variant='warning' size="lg">Submit</Button>
              </div>
-             <br />                      
+             <br /> 
 
-
-              </form>
+          </form>
 
 
         </div>
+    
 
      );
 }
  
-export default ExpensebillForm;
+export default OpdbillForm;
