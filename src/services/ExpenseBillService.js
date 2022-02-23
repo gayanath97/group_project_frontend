@@ -3,7 +3,7 @@ import axios from "axios";
 const EXPENSEBILL_BASE_REST_API_URL = 'http://localhost:8080/expensebill/';
 
 
-class ExpenseService{
+class ExpenseBillService{
 
 
    getAllExpenseBills(){
@@ -31,3 +31,5 @@ class ExpenseService{
 
 
 }
+
+export default new ExpenseBillService;

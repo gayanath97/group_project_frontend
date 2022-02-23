@@ -12,6 +12,7 @@ import AddExpense from './screens/AddExpense';
 import AddExpensebill from './screens/AddExpensebill'
 
 import Opd from './screens/Opd';
+import AddOpdbill from "./screens/AddOpdBill";
 
 
 function App() {
@@ -30,9 +31,12 @@ function App() {
                 <Route path='/expense' element={<Expense />} />
                 <Route path='/addexpense' element={<AddExpense />} />
                 <Route path='/addexpensebill' element={<AddExpensebill />} />
+                <Route path="/edit-expense/:id" element={<AddExpense />} />
+                <Route path="/edit-expensebill/:id" element={<AddExpensebill />} />
 
                 <Route path='/opd' element={<Opd />} />
-                
+                <Route path='/addopd' element={<AddOpdbill />} />
+                <Route path='/edit-opdbill/:id' element={<AddOpdbill />} />
              </Routes>
            </Router>
     </div>

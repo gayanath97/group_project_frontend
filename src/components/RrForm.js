@@ -100,11 +100,7 @@ const RrForm = () => {
             {title()}
                 
              
-             <form style={{
-             
-             backgroundColor: "dark",
-             padding: 6,
-            }}>
+            <form >
 
              <div>
                                  <label > ExtensionNo :</label>
@@ -142,13 +138,7 @@ const RrForm = () => {
              
              
              <br / >
-                 
-             
-               
-
-             
-
-              <br / >
+             <br / >
 
                   
             
