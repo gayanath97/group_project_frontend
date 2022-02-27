@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 const ExpensebillDetails = () => {
     const[expensebills,setexpensebills] = useState([]);
+
+    const [search, setNewSearch] = useState("");
    
    useEffect(() => {
 
@@ -48,9 +50,25 @@ const ExpensebillDetails = () => {
 
     }
 
+    const handleSearchChange = (e)=>{
+      setNewSearch(e.target.value);
+     }
+
+     const filtered = !search
+    ? expensebills
+    : expensebills.filter((e) =>
+          e.extensionNo.toLowerCase().includes(search.toLowerCase())
+      );
+
     return ( 
 
       <div>
+
+<br />
+          Filter your expense bill by extensionNo:{" "}
+      <input type="text" value={search} onChange={handleSearchChange} />
+          <br />
+          <br />
 
 <Table striped borderd hover variant="light">
             <thead>
@@ -65,7 +83,7 @@ const ExpensebillDetails = () => {
             </thead>
             <tbody>
              {   
-                    expensebills.map(
+                    filtered.map(
 
                         expensebill =>
                         
