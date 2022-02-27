@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const OpdDetails = () => {
 
     const[opds,setopds] = useState([]);
+
+    const [search, setNewSearch] = useState("");
    
     useEffect(() => {
  
@@ -49,10 +51,24 @@ const OpdDetails = () => {
  
      }
 
+     const handleSearchChange = (e)=>{
+      setNewSearch(e.target.value);
+     }
+
+     const filtered = !search
+    ? opds
+    : opds.filter((e) =>
+          e.date.toLowerCase().includes(search.toLowerCase())
+      );
+
     return ( 
 
         <div>
-
+          <br />
+          Filter your opd bill by date:{" "}
+      <input type="text" value={search} onChange={handleSearchChange} />
+          <br />
+          <br />
 <Table striped borderd hover variant="light">
             <thead>
                 <th>Opd Id</th>
@@ -65,7 +81,7 @@ const OpdDetails = () => {
             </thead>
             <tbody>
              {   
-                    opds.map(
+                    filtered.map(
 
                         opd =>
                         

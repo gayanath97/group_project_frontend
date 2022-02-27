@@ -14,6 +14,9 @@ import AddExpensebill from './screens/AddExpensebill'
 import Opd from './screens/Opd';
 import AddOpdbill from "./screens/AddOpdBill";
 
+import Login from './screens/Login';
+import Signup from './screens/Signup';
+
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
                 <Route path='/opd' element={<Opd />} />
                 <Route path='/addopd' element={<AddOpdbill />} />
                 <Route path='/edit-opdbill/:id' element={<AddOpdbill />} />
+
+                <Route path='/signup' element={<Signup />} />
+                <Route path='/signin' element={<Login />} />
              </Routes>
            </Router>
     </div>

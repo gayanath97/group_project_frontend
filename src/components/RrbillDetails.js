@@ -10,6 +10,8 @@ const RrbillDetails = () => {
 
     const [rrbills,setrrbills] = useState([])
 
+    const [search, setNewSearch] = useState("");
+
     // const [amount,setamount] = useState("")
     // const [particulars,setparticulars] = useState("")
     // const [date,setdate] = useState("")
@@ -53,13 +55,25 @@ const RrbillDetails = () => {
         )
      }
 
-
+     const handleSearchChange = (e)=>{
+        setNewSearch(e.target.value);
+       }
+  
+       const filtered = !search
+      ? rrbills
+      : rrbills.filter((e) =>
+            e.extensionNo.toLowerCase().includes(search.toLowerCase())
+        );
 
 
 
     return ( 
         <div>
-
+              <br />
+          Filter your RR bill by extensionNo:{" "}
+      <input type="text" value={search} onChange={handleSearchChange} />
+          <br />
+          <br />
               
               <div>
               <Table striped borderd hover variant="light" >
@@ -73,7 +87,7 @@ const RrbillDetails = () => {
             </thead>
             <tbody>
              {   
-                    rrbills.map(
+                    filtered.map(
 
                         rrbill =>
                         (
