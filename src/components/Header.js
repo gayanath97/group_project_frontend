@@ -36,10 +36,13 @@ const Header = () => {
   <Dropdown.Menu>
     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="/signin">LOG OUT</Dropdown.Item>
+    <Dropdown.Item href="/" onClick={()=>{localStorage.removeItem("accessToken")}}>LOG OUT</Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>
 </div> 
+&nbsp;
+&nbsp;
+&nbsp;
    <div style={{marginRight:15}} >
     <Avatar alt="prof" src={pl} />
     </div>

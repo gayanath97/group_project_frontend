@@ -23,7 +23,12 @@ function App() {
     <div >
            <Router>
              <Routes>
-                <Route exact path="/" element={<ClaimType />} />
+
+                
+                <Route exact path='/' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
+
+                <Route  path="/claimtype" element={<ClaimType />} />
 
                 <Route path='/rr' element={<Rr />} />
                 <Route path='/addrr' element={<AddRr />} />
@@ -41,8 +46,7 @@ function App() {
                 <Route path='/addopd' element={<AddOpdbill />} />
                 <Route path='/edit-opdbill/:id' element={<AddOpdbill />} />
 
-                <Route path='/signup' element={<Signup />} />
-                <Route path='/signin' element={<Login />} />
+                
              </Routes>
            </Router>
     </div>

@@ -1,11 +1,64 @@
  
 import '../style/LoginStyles.css';
-import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link,useNavigate } from 'react-router-dom';
 import pk from "../img/pk.jpg"
 import { Button } from 'react-bootstrap';
+import {useState} from "react";
+import SignInUserService from '../services/SignInUserService';
 
 const Login = () => {
+
+  const [username,setusername]=useState("")
+  const [password,setpassword]=useState("")
+
+  const navigate = useNavigate();
+
+  const signInUsers = (e)=>{
+    e.preventDefault();
+    const signin = {username,password}
+
+    SignInUserService.signUser(signin)
+        .then(
+            (response) => {
+            let accessToken = response.data.accessToken;
+            let a = "Bearer "
+            localStorage.setItem("accessToken",a+accessToken);
+            console.log(response.data)    
+            navigate('/claimtype')
+        }
+        )
+        .catch(
+            error => {
+            console.log(error)
+        }
+        )
+
+  }
+
+  
+  
+  //       useEffect(() => {
+       
+  //         SignInService.getsigneduser(id)
+  //         .then(
+  //             (response)=>{
+  //                 console.log(response.data.payload[0]);
+                  
+  //                 setusername(response.data.payload[0].username)
+  //                 setpassword(response.data.payload[0].password)
+                  
+  //             }
+  //         )
+  //         .catch(
+  //             (error)=>{
+  //                  console.log(error)
+  //             }
+  //         )
+
+         
+      
+  // }, [])
 
     return (  
       <div style={{
@@ -31,16 +84,30 @@ const Login = () => {
         <h3>Sign In</h3>
 
         <div className="form-group">
-            <label>User name</label>
-            <input type="text" className="form-control" placeholder="User name" />
+            <label>username</label>
+            <input 
+            type="text" 
+            className="form-control" 
+            name = "username"
+            placeholder="username" 
+            value = {username}
+            onChange = {(e) => setusername(e.target.value)}
+            />
         </div>
 
         <div className="form-group">
             <label>password</label>
-            <input type="text" className="form-control" placeholder="Password" />
+            <input 
+            type="text" 
+            className="form-control" 
+            name = "password"
+            placeholder="Password"
+            value = {password}
+            onChange = {(e) => setpassword(e.target.value)} 
+            />
         </div> 
         
-        <Link to="/"><Button type="submit" className="btn btn-primary btn-block" size="lg" >Sign In</Button></Link>
+        <Button onClick={(e)=>{signInUsers(e)}} type="submit" className="btn btn-primary btn-block" size="lg" >Sign In</Button>
         <p className="forgot-password text-right">
            <b style={{color:"red"}}>Not registered</b>  <Link to="/signup" style={{color:"black"}}>sign Up?</Link>
         </p>

@@ -49,6 +49,11 @@ const AddRrbill = () => {
 
 
     const rrbill = {extensionNo,amount, particulars, date}
+
+    const config = {
+        headers: { Authorization: localStorage.getItem("accessToken") }
+    };
+
     
 
     if(idd){
@@ -67,10 +72,14 @@ const AddRrbill = () => {
         )
 
     }else{
-        RrbillsService.createRrbill(rrbill)
+        
+        // RrbillsService.createRrbill(rrbill)
+        axios.post('http://localhost:8080/rrbill/',rrbill,
+            config
+            )
         .then(
             (response) =>{
-            
+               
                 console.log("hey2")
             console.log(response.data)
 
@@ -100,12 +109,14 @@ const AddRrbill = () => {
                     
                     
                 }
+                
             )
             .catch(
                 (error)=>{
                      console.log(error)
                 }
             )
+            
         
     }, [])
 
