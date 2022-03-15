@@ -11,6 +11,7 @@ const AddRrbill = () => {
     const [amount,setamount]=useState("")
     const [particulars,setparticulars]=useState("")
     const [date,setdate]=useState("")
+    const [ rr,setrr] = useState("2")
     
     const [file, setfile] = useState(null);
     
@@ -48,7 +49,7 @@ const AddRrbill = () => {
     e.preventDefault();
 
 
-    const rrbill = {extensionNo,amount, particulars, date}
+    const rrbill = {extensionNo,amount, particulars, date,rr}
 
     const config = {
         headers: { Authorization: localStorage.getItem("accessToken") }
@@ -106,6 +107,7 @@ const AddRrbill = () => {
                     setamount(response.data.payload[0].amount)
                     setparticulars(response.data.payload[0].particulars)
                     setdate(response.data.payload[0].date)
+                    setrr(response.data.payload[0].rr)
                     
                     
                 }

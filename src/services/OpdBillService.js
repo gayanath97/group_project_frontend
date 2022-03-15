@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const OPDBILL_BASE_REST_API_URL = 'http://localhost:8080/opdbill/';
+const OPDBILL_BASE_REST_API_URL = 'http://localhost:8080/opd/';
 
 
 class OpdBillService{

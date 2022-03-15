@@ -16,14 +16,14 @@ const OpdbillForm = () => {
    const[amount,setamount] = useState("");
    const[particulars,setparticulars] = useState("");
    const[date,setdate] = useState("");
-   const[sta_tus,setsta_tus] = useState("");
+//    const[sta_tus,setsta_tus] = useState("");
 
 
    const saveOrUpdateOpdBill = (e) => {
 
 
     e.preventDefault();
-    const opdBill = {amount,particulars,date,sta_tus}
+    const opdBill = {amount,particulars,date}
     
 
     if(id){
@@ -71,7 +71,7 @@ const OpdbillForm = () => {
                        setamount(response.data.payload[0].amount)
                        setparticulars(response.data.payload[0].particulars)
                        setdate(response.data.payload[0].date)
-                       setsta_tus(response.data.payload[0].sta_tus)
+                    //    setsta_tus(response.data.payload[0].sta_tus)
                     
                    }
                )

@@ -13,6 +13,7 @@ const ExpensebillForm = () => {
    const[amount,setamount] = useState("");
    const[sta_tus,setsta_tus] = useState("");
    const[extensionNo,setextensionNo] = useState("");
+   const[expense,setexpense] = useState("2")
 
    const [file, setfile] = useState(null);
 
@@ -24,7 +25,7 @@ const ExpensebillForm = () => {
 
 
     e.preventDefault();
-    const expenseBill = {extensionNo,particulars, amount, sta_tus}
+    const expenseBill = {extensionNo,particulars, amount, sta_tus, expense}
     
 
     if(id){
@@ -73,6 +74,7 @@ const ExpensebillForm = () => {
                        setparticulars(response.data.payload[0].particulars)
                        setamount(response.data.payload[0].amount)
                        setsta_tus(response.data.payload[0].sta_tus)
+                       setexpense(response.data.payload[0].expense)
                     
                    }
                )
@@ -173,13 +175,14 @@ const ExpensebillForm = () => {
              <div>
              <Button onClick={
                  (e)=>{
+                     
                      saveOrUpdateExpenseBill(e);
                      handleSubmit(e);
                     }
                  } variant='warning' size="lg">Submit</Button>
              </div>
              <br />                      
-
+            
 
               </form>
 

@@ -19,6 +19,10 @@ const ClaimType = () => {
                          }}>
                 <br />
                 <div style={{textAlign:"center"}}>
+                <h1>{"Welcome "+localStorage.getItem("firstName")+" "+localStorage.getItem("lastName")}</h1>
+                </div>
+               
+                <div style={{textAlign:"center"}}>
                     <h1 style={{fontWeight: 'bold',
                                   color:"red"
                           }}>Select claim type </h1>

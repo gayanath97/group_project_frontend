@@ -25,13 +25,15 @@ const Signup = () => {
 
   const signUpUsers = (e)=>{
     e.preventDefault();
+    
     const signup = {firstName,lastName,email,username,password,phoneNumber,role}
 
     SignUpUserService.signUser(signup)
         .then(
             (response) => {
 
-            console.log(response.data)    
+            console.log(response.data)
+              
             navigate('/')
         }
         )
@@ -142,7 +144,10 @@ const Signup = () => {
                 if(e.target.checked){
   
                   arr.push(e.target.value)
+                  role.push(e.target.value)
                   console.log(arr)
+                 
+                 
                 }
                   
               }
@@ -155,7 +160,10 @@ const Signup = () => {
                             if(e.target.checked){
               
                               arr.push(e.target.value)
+                              role.push(e.target.value)
                               console.log(arr)
+                              
+                              
                             }
                               
                           }
@@ -167,7 +175,9 @@ const Signup = () => {
                           (e)=>{
                             if(e.target.checked){
                               arr.push(e.target.value)
+                              role.push(e.target.value)
                               console.log(arr)
+                                    
                             }
                               
                           }
@@ -177,8 +187,12 @@ const Signup = () => {
         
         
         <Button onClick={(e)=>{
+          console.log(arr)
           setrole(arr)
-          signUpUsers(e)}} type="submit" className="btn btn-primary btn-block" size="lg">Sign Up</Button>
+          console.log(role)
+          signUpUsers(e)
+          }} 
+          type="submit" className="btn btn-primary btn-block" size="lg">Sign Up</Button>
         <p className="forgot-password text-right">
            <b style={{color:"red"}}>Already registered</b>  <Link to="/" style={{color:"black"}}>sign in?</Link>
         </p>

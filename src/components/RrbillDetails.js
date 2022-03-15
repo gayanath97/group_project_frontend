@@ -78,11 +78,16 @@ const RrbillDetails = () => {
               <div>
               <Table striped borderd hover variant="light" >
             <thead>
+
+                <th>RR_ID</th>
                 <th>Extension No</th>
                 <th>RrBill Id</th>
                 <th>Amount</th>
                 <th>Particulars</th>
                 <th>Date</th>
+                
+                
+
                 <th>Actions</th>
             </thead>
             <tbody>
@@ -92,6 +97,8 @@ const RrbillDetails = () => {
                         rrbill =>
                         (
                         <tr key={rrbill.id}>
+
+                               <td>{rrbill.rr}</td>
                                <td>{rrbill.extensionNo}</td>
                                <td>{rrbill.id}</td>
                                <td>{rrbill.amount}</td>

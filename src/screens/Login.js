@@ -24,6 +24,10 @@ const Login = () => {
             let accessToken = response.data.accessToken;
             let a = "Bearer "
             localStorage.setItem("accessToken",a+accessToken);
+            let firstName =response.data.firstName;
+            localStorage.setItem("firstName",firstName);
+            let lastName =response.data.lastName;
+            localStorage.setItem("lastName",lastName);
             console.log(response.data)    
             navigate('/claimtype')
         }

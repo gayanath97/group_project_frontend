@@ -1,6 +1,11 @@
 import {BrowserRouter as Router,Routes,Route}  from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from 'redux'
+import { actionCreators } from "./state/index"
+
 import ClaimType from './screens/ClaimType';
 
 import Rr from './screens/Rr'
@@ -19,6 +24,13 @@ import Signup from './screens/Signup';
 
 
 function App() {
+
+  // const state = useSelector((state) => state.bank);
+
+  // const dispatch = useDispatch();
+
+  // const { depositMoney, withdrawMoney } = bindActionCreators(actionCreators, dispatch);
+
   return (
     <div >
            <Router>

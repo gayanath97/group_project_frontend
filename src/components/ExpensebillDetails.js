@@ -77,6 +77,7 @@ const ExpensebillDetails = () => {
                 <th>Particulars</th>
                 <th>Amount</th>
                 <th>Sta_tus</th>
+                <th>Expense_ID</th>
                 
                 
                 <th>Actions</th>
@@ -93,6 +94,7 @@ const ExpensebillDetails = () => {
                                <td>{expensebill.particulars}</td>
                                <td>{expensebill.amount}</td>
                                <td>{expensebill.sta_tus}</td>
+                               <td>{expensebill.expense}</td>
                                
                                <td>
                                
