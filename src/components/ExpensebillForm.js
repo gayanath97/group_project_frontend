@@ -3,8 +3,12 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import ExpenseBillService from "../services/ExpenseBillService";
 import axios from "axios";
+
+import {PostExpensebillApiAction,UpdateExpensebillApiAction} from '../redux/action/expensebillAction'
+import { useDispatch, useSelector } from "react-redux";
+import { GetExpensebillDetailsById } from "../services/ExpenseBillService";
+
 
 
 const ExpensebillForm = () => {
@@ -13,13 +17,33 @@ const ExpensebillForm = () => {
    const[amount,setamount] = useState("");
    const[sta_tus,setsta_tus] = useState("");
    const[extensionNo,setextensionNo] = useState("");
-   const[expense,setexpense] = useState("2")
+
+   const expenseId = localStorage.getItem("expenseId");
+   const[expense,setexpense] = useState(expenseId)
+
+   console.log(expenseId);
+   console.log(expense);
 
    const [file, setfile] = useState(null);
 
    const navigate = useNavigate();
    const {id} = useParams();
 
+   const dispatch = useDispatch();
+    const isResponse = useSelector(state=>state.expensebillReducer.isResponse)
+    const isUpdateResponse = useSelector(state=>state.expensebillReducer.isUpdateResponse)
+
+    if(isUpdateResponse){
+        alert("Your data has been updated!"); 
+        navigate('/expensebilldetails')
+        window.location.reload(false);
+    }
+    
+    if(isResponse){
+        alert("Your response has been submitted!");
+        navigate('/expensebilldetails')
+        window.location.reload(false);
+    }
 
    const saveOrUpdateExpenseBill = (e) => {
 
@@ -29,43 +53,16 @@ const ExpensebillForm = () => {
     
 
     if(id){
-         ExpenseBillService.updateExpenseBill(expenseBill,id)
-        .then(
-            (response) => {
-
-            console.log(response.data)    
-            navigate('/expense')
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
-
+        dispatch(UpdateExpensebillApiAction(expenseBill,id));
+      
     }else{
-     ExpenseBillService.createExpenseBill(expenseBill)
-        .then(
-            (response) =>{
-            
-                console.log("hey")
-            console.log(response.data)
-
-            navigate('/expense');
-
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(PostExpensebillApiAction(expenseBill));
     }
     }
 
     useEffect(() => {
        
-        ExpenseBillService.getExpenseBillById(id)
+        GetExpensebillDetailsById(id)
                .then(
                    (response)=>{
                        console.log(response.data.payload[0]);
@@ -130,6 +127,11 @@ const ExpensebillForm = () => {
              {title()}
 
               <form>
+              
+              <div>
+                                 <label > EXPENSE ID No:{expenseId}</label>
+                                 
+             </div>
 
               <div>
                                  <label > ExtensionNo :</label>

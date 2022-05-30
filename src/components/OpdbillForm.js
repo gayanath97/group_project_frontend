@@ -3,8 +3,13 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import OpdBillService from "../services/OpdBillService";
 import axios from "axios";
+
+import {PostOpdbillApiAction,UpdateOpdbillApiAction} from '../redux/action/opdAction'
+import { useDispatch, useSelector } from "react-redux";
+import { GetOpdbillDetailsById } from "../services/OpdBillService";
+
+
 
 const OpdbillForm = () => {
 
@@ -13,57 +18,54 @@ const OpdbillForm = () => {
    const navigate = useNavigate();
    const {id} = useParams();
 
+   const dispatch = useDispatch();
+    const isResponse = useSelector(state=>state.opdReducer.isResponse)
+    const isUpdateResponse = useSelector(state=>state.opdReducer.isUpdateResponse)
+
    const[amount,setamount] = useState("");
    const[particulars,setparticulars] = useState("");
    const[date,setdate] = useState("");
 //    const[sta_tus,setsta_tus] = useState("");
+
+const employeeId = localStorage.getItem("userId");
+const[employee,setemployee] = useState(employeeId)
+
+console.log(employeeId);
+console.log(employee);
+    
+
+if(isUpdateResponse){
+    alert("Your data has been updated!"); 
+    navigate('/opd')
+    window.location.reload(false);
+}
+
+if(isResponse){
+    alert("Your response has been submitted!");
+    navigate('/opd')
+    window.location.reload(false);
+}
 
 
    const saveOrUpdateOpdBill = (e) => {
 
 
     e.preventDefault();
-    const opdBill = {amount,particulars,date}
+    const opdBill = {amount,particulars,date,employee}
     
 
     if(id){
-         OpdBillService.updateOpdBill(opdBill,id)
-        .then(
-            (response) => {
-
-            console.log(response.data)    
-            navigate('/opd')
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
-
+        dispatch(UpdateOpdbillApiAction(id,opdBill));
+      
     }else{
-     OpdBillService.createOpdBill(opdBill)
-        .then(
-            (response) =>{
-            
-                console.log("hey")
-            console.log(response.data)
-
-            navigate('/opd');
-
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(PostOpdbillApiAction(opdBill));
     }
     }
 
     useEffect(() => {
        
-        OpdBillService.getOpdBillById(id)
+        
+        GetOpdbillDetailsById(id)
                .then(
                    (response)=>{
                        console.log(response.data.payload[0]);
@@ -72,6 +74,8 @@ const OpdbillForm = () => {
                        setparticulars(response.data.payload[0].particulars)
                        setdate(response.data.payload[0].date)
                     //    setsta_tus(response.data.payload[0].sta_tus)
+
+                      setemployee(response.data.payload[0].employee)
                     
                    }
                )
@@ -79,9 +83,7 @@ const OpdbillForm = () => {
                    (error)=>{
                         console.log(error)
                    }
-               )
-   
-              
+               )       
            
        }, [])
     const handleFileSelect = (event) =>{
@@ -126,6 +128,11 @@ const OpdbillForm = () => {
           {title()}
 
           <form>
+
+          <div>
+                                 <label > EMPLOYEE ID No:{employeeId}</label>
+                                 
+             </div>    
 
           <div>
                                  <label > Amount :</label>
@@ -180,7 +187,6 @@ const OpdbillForm = () => {
              <br /> 
 
           </form>
-
 
         </div>
     

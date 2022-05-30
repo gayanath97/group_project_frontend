@@ -49,7 +49,7 @@ const Signup = () => {
     return (  
       <div style={{
         
-        backgroundImage:`url(${pk})`,
+        // backgroundImage:`url(${pk})`,
         backgroundSize:"cover",
         
         
@@ -61,12 +61,13 @@ const Signup = () => {
         width:400,
         margin: "auto",
         alignContent : "center",
-        border: "dashed",
-        borderColor:"red"
+        // border: "dashed",
+        // borderColor:"red"
           
        }}>
        
-        <form style={{backgroundColor:"orange"}}>
+        {/* <form style={{backgroundColor:"orange"}}> */}
+        <form>
         <h3>Sign Up</h3>
         <div className="form-group">
             <label>First name</label>

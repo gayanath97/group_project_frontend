@@ -1,5 +1,5 @@
  
-import '../style/LoginStyles.css';
+// import '../style/LoginStyles.css';
 import React from "react";
 import { Link,useNavigate } from 'react-router-dom';
 import pk from "../img/pk.jpg"
@@ -28,6 +28,8 @@ const Login = () => {
             localStorage.setItem("firstName",firstName);
             let lastName =response.data.lastName;
             localStorage.setItem("lastName",lastName);
+            let userId =response.data.id;
+            localStorage.setItem("userId",userId);
             console.log(response.data)    
             navigate('/claimtype')
         }
@@ -67,7 +69,7 @@ const Login = () => {
     return (  
       <div style={{
         
-        backgroundImage:`url(${pk})`,
+        // backgroundImage:`url(${pk})`,
         backgroundSize:"cover",
           
       }}>
@@ -79,12 +81,13 @@ const Login = () => {
         width:400,
         margin: "auto",
         alignContent : "center",
-        border: "dashed",
-        borderColor:"red"
+        // border: "dashed",
+        // borderColor:"red"
           
        }}>
        
-        <form style={{backgroundColor:"orange"}}>
+        {/* <form style={{backgroundColor:"orange"}}> */}
+        <form >
         <h3>Sign In</h3>
 
         <div className="form-group">

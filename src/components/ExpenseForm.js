@@ -4,6 +4,10 @@ import ExpensesService from "../services/ExpensesService"
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+import {PostExpenseApiAction,UpdateExpenseApiAction} from '../redux/action/expenseAction'
+import { useDispatch, useSelector } from "react-redux";
+import { GetExpenseDetailsById } from "../services/ExpensesService";
+
 const ExpenseForm = () => {
 
    const[buOrDept,setbuOrDept] = useState("");
@@ -14,54 +18,49 @@ const ExpenseForm = () => {
    const[billability,setbillability] = useState("");
    const[sta_tus,setsta_tus] = useState("")
 
+   const employeeId = localStorage.getItem("userId");
+   const[employee,setemployee] = useState(employeeId)
+
+   console.log(employeeId);
+   console.log(employee);
+
    const navigate = useNavigate();
    const {id} = useParams();
+
+   const dispatch = useDispatch();
+    const isResponse = useSelector(state=>state.expenseReducer.isResponse)
+    const isUpdateResponse = useSelector(state=>state.expenseReducer.isUpdateResponse)
 
     
     const saveOrUpdateExpense = (e)=>{
 
     e.preventDefault();
-    const expense = {buOrDept, project, extensionNo,customer,location,billability,sta_tus}
+    const expense = {buOrDept, project, extensionNo,customer,location,billability,sta_tus,employee}
     
 
     if(id){
-         ExpensesService.updateExpense(expense,id)
-        .then(
-            (response) => {
-
-            console.log(response.data)    
-            navigate('/expense')
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(UpdateExpenseApiAction(expense,id)); 
 
     }else{
-     ExpensesService.createExpense(expense)
-        .then(
-            (response) =>{
-            
-                console.log("hey")
-            console.log(response.data)
-
-            navigate('/expense');
-
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(PostExpenseApiAction(expense));
     }
+    }
+
+    if(isUpdateResponse){
+        alert("Your data has been updated!"); 
+        navigate('/expense')
+        window.location.reload(false);
+    }
+    
+    if(isResponse){
+        alert("Your response has been submitted!");
+        navigate('/expense')
+        window.location.reload(false);
     }
 
     useEffect(() => {
        
-     ExpensesService.getExpenseById(id)
+        GetExpenseDetailsById(id)
             .then(
                 (response)=>{
                     console.log(response.data.payload[0]);
@@ -73,6 +72,7 @@ const ExpenseForm = () => {
                     setlocation(response.data.payload[0].location)
                     setbillability(response.data.payload[0].billability)
                     setsta_tus(response.data.payload[0].sta_tus)
+                    setemployee(response.data.payload[0].employee)
                 }
             )
             .catch(
@@ -102,6 +102,11 @@ const ExpenseForm = () => {
              {title()}
 
              <form>
+
+             <div>
+                                 <label > EMPLOYEE ID No:{employeeId}</label>
+                                 
+             </div>      
 
              <div>
                                  <label > BuOrDept :</label>

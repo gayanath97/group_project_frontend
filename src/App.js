@@ -1,10 +1,7 @@
 import {BrowserRouter as Router,Routes,Route}  from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from 'redux'
-import { actionCreators } from "./state/index"
+
 
 import ClaimType from './screens/ClaimType';
 
@@ -21,15 +18,13 @@ import AddOpdbill from "./screens/AddOpdBill";
 
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import Rrbill from './screens/Rrbill';
+import Expensebill from './screens/Expensebill';
 
 
 function App() {
 
-  // const state = useSelector((state) => state.bank);
 
-  // const dispatch = useDispatch();
-
-  // const { depositMoney, withdrawMoney } = bindActionCreators(actionCreators, dispatch);
 
   return (
     <div >
@@ -47,12 +42,14 @@ function App() {
                 <Route path='/addrrbill' element={<AddRrbill />} />
                 <Route path="/edit-rr/:id" element={<AddRr />} />
                 <Route path="/edit-rrbill/:idd" element={<AddRrbill />} />
+                <Route path="/rrbilldetails/" element={<Rrbill />} />
 
                 <Route path='/expense' element={<Expense />} />
                 <Route path='/addexpense' element={<AddExpense />} />
                 <Route path='/addexpensebill' element={<AddExpensebill />} />
                 <Route path="/edit-expense/:id" element={<AddExpense />} />
                 <Route path="/edit-expensebill/:id" element={<AddExpensebill />} />
+                <Route path='/expensebilldetails/' element={<Expensebill />} />
 
                 <Route path='/opd' element={<Opd />} />
                 <Route path='/addopd' element={<AddOpdbill />} />

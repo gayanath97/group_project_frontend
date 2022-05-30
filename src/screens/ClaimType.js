@@ -12,7 +12,8 @@ const ClaimType = () => {
     <div>
         <Header />
 
-        <div style={{backgroundImage:`url(${pl})`,
+        {/* <div style={{backgroundImage:`url(${pl})`, */}
+        <div style={{
                          width: '100%',
                          height: '100%',
                          backgroundSize: 'cover'

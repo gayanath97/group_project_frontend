@@ -1,65 +1,58 @@
 import { useState,useEffect } from "react";
 import {useNavigate,useParams, Link } from "react-router-dom";
-import RrsService from '../services/RrsService';
 import { Button } from "react-bootstrap";
 
-import create from 'zustand'
+import {PostRrApiAction,UpdateRrApiAction} from '../redux/action/rrAction'
+import { useDispatch, useSelector } from "react-redux";
+import { GetRrDetailsById } from "../services/RrsService";
 
 const RrForm = () => {
     const [extensionNo,setextensionNo]=useState("")
     const [customer,setcustomer]=useState("")
     const [location,setlocation]=useState("")
     const [sta_tus,setsta_tus]=useState("")
+    
+   const employeeId = localStorage.getItem("userId");
+   const[employee,setemployee] = useState(employeeId)
+
+   console.log(employeeId);
+   console.log(employee);
 
     const navigate = useNavigate();
     const {id} = useParams();
 
+    const dispatch = useDispatch();
+    const isResponse = useSelector(state=>state.rrReducer.isResponse)
+    const isUpdateResponse = useSelector(state=>state.rrReducer.isUpdateResponse)
+
     
     const saveOrUpdateRr = (e)=>{
     e.preventDefault();
-
-
-    const rr = {extensionNo, customer, location}
+    const rr = {extensionNo, customer, location,employee}
     
-
     if(id){
-         RrsService.updateRr(id, rr)
-        .then(
-            (response) => {
-
-            console.log(response.data)    
-            navigate('/rr')
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+       dispatch(UpdateRrApiAction(rr,id));  
 
     }else{
-        RrsService.createRr(rr)
-        .then(
-            (response) =>{
-            
-                console.log("hey")
-            console.log(response.data)
-
-            navigate('/rr');
-
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(PostRrApiAction(rr));
     }
+    }
+
+    if(isUpdateResponse){
+        alert("Your data has been updated!"); 
+        navigate('/rr')
+        window.location.reload(false);
+    }
+    
+    if(isResponse){
+        alert("Your response has been submitted!");
+        navigate('/rr')
+        window.location.reload(false);
     }
 
     useEffect(() => {
        
-            RrsService.getRrById(id)
+            GetRrDetailsById(id)
             .then(
                 (response)=>{
                     console.log(response.data.payload[0]);
@@ -68,6 +61,7 @@ const RrForm = () => {
                     setcustomer(response.data.payload[0].customer)
                     setlocation(response.data.payload[0].location)
                     setsta_tus(response.data.payload[0].sta_tus)
+                    setemployee(response.data.payload[0].employee)
                 }
             )
             .catch(
@@ -101,6 +95,11 @@ const RrForm = () => {
                 
              
             <form >
+
+            <div>
+                                 <label > EMPLOYEE ID No:{employeeId}</label>
+                                 
+             </div>   
 
              <div>
                                  <label > ExtensionNo :</label>

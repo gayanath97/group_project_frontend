@@ -3,51 +3,33 @@ import ExpensesService from "../services/ExpensesService"
 import { Table,Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from 'react-redux'
+import { GetExpenseApiAction,DeleteExpenseApiAction } from '../redux/action/expenseAction';
+
+
 const ExpenseDetails = () => {
 
-   const[expenses,setexpenses] = useState([]);
-   
-   useEffect(() => {
+  const [search, setNewSearch] = useState("");
 
-    getAllExpenses();
+const dispatch = useDispatch();
+const responseData = useSelector(state=>state.expenseReducer.expenseDetails)
+const isDeleteResponse = useSelector(state=>state.expenseReducer.isDeleteResponse)
 
-    }, [])
 
-    const getAllExpenses = () =>
-    {
-      ExpensesService.getAllExpenses()
-      .then(
-        (response)=>{
-              
-          setexpenses(response.data.payload[0]);
-          console.log(response.data);
 
-        }
-        
-      )
-      .catch(
-        error=>{
-          console.log(error);
-        }
-      )
-    }
+useEffect(() => {
+  dispatch(GetExpenseApiAction());
+  }, [dispatch])
 
-    const deleteExpense = (id) => {
+//   if(isDeleteResponse){
+//     alert("Your data has been deleted!")
+//     window.location.reload(false)
+// }
 
-      ExpensesService.deleteExpense(id)
-      .then(
-          (response) =>{
-       getAllExpenses();
-  
-      }
-      )
-      .catch(
-          error =>{
-          console.log(error);
-      }
-      )
-
-    }
+const employeeId= localStorage.getItem('userId');
+   const filtered = !search
+    ? responseData.filter((e)=>{return e.employee==employeeId })
+    : null
 
     return ( 
 
@@ -55,6 +37,7 @@ const ExpenseDetails = () => {
 
 <Table striped borderd hover variant="light">
             <thead>
+                <th>Employee Id Id</th>
                 <th>Expense Id</th>
                 <th>BuOrDept</th>
                 <th>Project</th>
@@ -63,16 +46,18 @@ const ExpenseDetails = () => {
                 <th>Location</th>
                 <th>Billability</th>
                 <th>Status</th>
-                
+                <th>Bills</th>
                 <th>Actions</th>
             </thead>
             <tbody>
              {   
-                    expenses.map(
+                    filtered?
+                    filtered.map(
 
-                        expense =>
-                        
+                        expense =>{
+                        return(
                         <tr key={expense.id}>
+                               <td>{expense.employee}</td>
                                <td>{expense.id}</td>
                                <td>{expense.buOrDept}</td>
                                <td>{expense.project}</td>
@@ -82,14 +67,26 @@ const ExpenseDetails = () => {
                                <td>{expense.billability}</td>
                                <td>{expense.sta_tus}</td>
                                <td>
+                               <Button onClick={()=>{
+                                 localStorage.setItem('extNoExp', expense.extensionNo);
+                                 localStorage.setItem('expenseId',expense.id);
+                                 console.log(localStorage.getItem('expenseId'))
+                                 }} variant="warning"> <Link to={`/expensebilldetails/`} >View</Link></Button>
+                               </td>
+                               <td>
                                {/* <buttton> <Link to={`/edit-rr/${rr.id}`} >Update</Link></buttton>  */}
-                               <Button variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => deleteExpense(expense.id)}
+                               <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button>
+                               <Button  onClick = {() => {
+                                 dispatch(DeleteExpenseApiAction(expense.id))
+                                 alert("Your data has been deleted!")
+                                   window.location.reload(false)
+                               }}
                                     style = {{marginLeft:"15px"}} variant="danger"> Delete</Button>
                                </td>
                         </tr>
 
                     )
+                        }):null
              }       
             </tbody>
         </Table>

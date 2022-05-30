@@ -1,8 +1,11 @@
 import { useState,useEffect } from "react";
 import {useNavigate,useParams, Link } from "react-router-dom";
-import RrbillsService from "../services/RrbillsService";
 import axios from 'axios';
 import { Button } from "react-bootstrap";
+
+import {PostRrbillApiAction,UpdateRrbillApiAction} from '../redux/action/rrbillAction'
+import { useDispatch, useSelector } from "react-redux";
+import { GetRrbillDetailsById } from "../services/RrbillsService";
 
 
 const AddRrbill = () => {
@@ -11,12 +14,33 @@ const AddRrbill = () => {
     const [amount,setamount]=useState("")
     const [particulars,setparticulars]=useState("")
     const [date,setdate]=useState("")
-    const [ rr,setrr] = useState("2")
+
+    const rrId = localStorage.getItem("rrId");
+    const [ rr,setrr] = useState(rrId)
+
+   console.log(rrId);
+   console.log(rr);
     
     const [file, setfile] = useState(null);
     
     const navigate = useNavigate();
     const {idd} = useParams();
+
+    const dispatch = useDispatch();
+    const isResponse = useSelector(state=>state.rrbillReducer.isResponse)
+    const isUpdateResponse = useSelector(state=>state.rrbillReducer.isUpdateResponse)
+
+    if(isUpdateResponse){
+        alert("Your data has been updated!"); 
+        navigate('/rrbilldetails')
+        window.location.reload(false);
+    }
+    
+    if(isResponse){
+        alert("Your response has been submitted!");
+        navigate('/rrbilldetails')
+        window.location.reload(false);
+    }
 
     const handleSubmit = (event) =>{
         event.preventDefault()
@@ -58,47 +82,17 @@ const AddRrbill = () => {
     
 
     if(idd){
-         RrbillsService.updateRrbill(idd, rrbill)
-        .then(
-            (response) => {
-
-            console.log(response.data)    
-            navigate('/rr')
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(UpdateRrbillApiAction(rrbill,idd));
 
     }else{
         
-        // RrbillsService.createRrbill(rrbill)
-        axios.post('http://localhost:8080/rrbill/',rrbill,
-            config
-            )
-        .then(
-            (response) =>{
-               
-                console.log("hey2")
-            console.log(response.data)
-
-            navigate('/rr');
-
-        }
-        )
-        .catch(
-            error => {
-            console.log(error)
-        }
-        )
+        dispatch(PostRrbillApiAction(rrbill));
     }
     }
 
     useEffect(() => {
-       
-            RrbillsService.getRrbillById(idd)
+       GetRrbillDetailsById(idd)
+        
             .then(
                 (response)=>{
                     console.log(response.data.payload[0]);
@@ -140,12 +134,17 @@ const AddRrbill = () => {
          <div>
             
             {title()}
+            
                 
              
              <form>
+             <div>
+                                 <label > RR ID No:{rrId}</label>
+                                 
+             </div>
 
              <div>
-                                 <label > Extensio No :</label>
+                                 <label > Extensio No:</label>
                                  <input
                                      type = "text"
                                      placeholder = "Enter Extension No"
@@ -185,10 +184,14 @@ const AddRrbill = () => {
                                      placeholder = "Enter date"
                                      name = "date"
                                      value = {date}
-                                     onChange = {(e) => setdate(e.target.value)}
+                                     onChange = {(e) => {
+                                         setdate(e.target.value);
+                                    }
+                                    }
                                  >
                                  </input>
              </div>
+             
              <br />
              <input type="file" onChange={handleFileSelect}/>
 
@@ -197,6 +200,7 @@ const AddRrbill = () => {
 
              <div>
              <Button onClick={(e)=>{
+                // console.log(rr);
                  saveOrUpdateRrbill(e);
                  handleSubmit(e);
                  }

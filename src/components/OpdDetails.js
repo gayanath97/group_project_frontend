@@ -3,74 +3,52 @@ import OpdBillService from "../services/OpdBillService"
 import { Table,Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+import { useDispatch, useSelector } from 'react-redux'
+import { GetOpdbillApiAction,DeleteOpdbillApiAction } from '../redux/action/opdAction';
+
+
+
 const OpdDetails = () => {
 
     const[opds,setopds] = useState([]);
 
+const dispatch = useDispatch();
+const responseData = useSelector(state=>state.opdReducer.opdbillDetails)
+const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
+
+
     const [search, setNewSearch] = useState("");
    
     useEffect(() => {
+      dispatch(GetOpdbillApiAction());
+      }, [dispatch])
+
+//       if(isDeleteResponse){
+//         alert("Your data has been deleted!")
+//         window.location.reload(false)
+// }
  
-     getAllOpds();
- 
-     }, [])
- 
-     const getAllOpds = () =>
-     {
-       OpdBillService.getAllOpdBills()
-       .then(
-         (response)=>{
-               
-           setopds(response.data.payload[0]);
-           console.log(response.data);
- 
-         }
-         
-       )
-       .catch(
-         error=>{
-           console.log(error);
-         }
-       )
-     }
- 
-     const deleteOpd = (id) => {
- 
-       OpdBillService.deleteOpdBill(id)
-       .then(
-           (response) =>{
-        getAllOpds();
-   
-       }
-       )
-       .catch(
-           error =>{
-           console.log(error);
-       }
-       )
- 
-     }
 
      const handleSearchChange = (e)=>{
       setNewSearch(e.target.value);
      }
 
+     const employeeId= localStorage.getItem('userId');
      const filtered = !search
-    ? opds
-    : opds.filter((e) =>
-          e.date.toLowerCase().includes(search.toLowerCase())
-      );
+      ? responseData.filter((e)=>{return e.employee==employeeId })
+      : null
 
     return ( 
 
         <div>
-          <br />
-          Filter your opd bill by date:{" "}
+          {/* <br />
+          Filter your opd bill by particulars:{" "}
       <input type="text" value={search} onChange={handleSearchChange} />
           <br />
-          <br />
+          <br /> */}
 <Table striped borderd hover variant="light">
             <thead>
+            <th>Employee Id Id</th>
                 <th>Opd Id</th>
                 <th>Amount</th>
                 <th>Particulars</th>
@@ -81,11 +59,13 @@ const OpdDetails = () => {
             </thead>
             <tbody>
              {   
-                    filtered.map(
+                    filtered?
+                   filtered.map(
 
-                        opd =>
-                        
+                        opd =>{
+                       return( 
                         <tr key={opd.id}>
+                            <td>{opd.employee}</td>
                                <td>{opd.id}</td>
                                <td>{opd.amount}</td>
                                <td>{opd.particulars}</td>
@@ -94,12 +74,18 @@ const OpdDetails = () => {
                                <td>
                                
                                <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => deleteOpd(opd.id)}
+                               <Button  onClick = {() => {
+                               dispatch(DeleteOpdbillApiAction(opd.id))
+                               alert("Your data has been deleted!")
+                             window.location.reload(false)
+                               }
+                              }
                                     style = {{marginLeft:"15px"}} variant="danger"> Delete</Button>
                                </td>
                         </tr>
 
                     )
+                       }):null
              }       
             </tbody>
         </Table>
