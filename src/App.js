@@ -20,6 +20,14 @@ import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Rrbill from './screens/Rrbill';
 import Expensebill from './screens/Expensebill';
+import Rrs from './screens/Rrs';
+import Opds from './screens/Opds';
+import Expenses from './screens/Expenses';
+import Admin from './screens/Manager';
+import Employees from './screens/Employees';
+import Rrbills from './screens/Rrbills';
+import Expensebills from './screens/Expensebills'
+import Manager from './screens/Manager';
 
 
 function App() {
@@ -54,6 +62,14 @@ function App() {
                 <Route path='/opd' element={<Opd />} />
                 <Route path='/addopd' element={<AddOpdbill />} />
                 <Route path='/edit-opdbill/:id' element={<AddOpdbill />} />
+
+                <Route path='/manager' element={<Manager />} />
+                <Route path='/employees' element={<Employees />} />
+                <Route path='/rrs' element={<Rrs />} />
+                <Route path='/opds' element={<Opds />} />
+                <Route path='/expenses' element={<Expenses />} />
+                <Route path='/rrbills' element={<Rrbills />} />
+                <Route path='/expensebills' element={<Expensebills />} />
 
                 
              </Routes>
