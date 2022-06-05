@@ -30,8 +30,8 @@ useEffect(() => {
    const filtered = !search
     ? responseData
     : responseData.filter((e)=>{
-      // e.extensionNo.toLowerCase().includes(search.toLowerCase()) 
-      return e.employee == search.toLowerCase()
+     //  e.sta_tus.toLowerCase().includes(search.toLowerCase()) 
+      return e.sta_tus == search.toLowerCase()
   })
   const handleSearchChange = (e)=>{
     setNewSearch(e.target.value);
@@ -41,7 +41,7 @@ useEffect(() => {
 
       <div>
         <br />
-          Filter Expenses by employee Id:{" "}
+          Filter Expenses by status(pending/accepted/rejected):{" "}
       <input type="text" value={search} onChange={handleSearchChange} />
           <br />
           <br />
@@ -86,7 +86,12 @@ useEffect(() => {
                                </td>
                                <td>
                                {/* <buttton> <Link to={`/edit-rr/${rr.id}`} >Update</Link></buttton>  */}
-                               <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button>
+
+                               {/* <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button> */}
+
+                               <Button  variant="warning"> Accept</Button>
+                               <Button  variant="danger"> Reject</Button>
+
                                {/* <Button  onClick = {() => {
                                  dispatch(DeleteExpenseApiAction(expense.id))
                                  alert("Your data has been deleted!")

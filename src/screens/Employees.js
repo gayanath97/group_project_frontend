@@ -1,6 +1,8 @@
+import EmployeeDetails from "../components/EmployeeDetails";
+
 const Employees = () => {
     return ( 
-        <h1>employees</h1>
+        <EmployeeDetails />
      );
 }
  

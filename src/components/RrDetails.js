@@ -9,7 +9,7 @@ import { GetRrApiAction,DeleteRrApiAction } from '../redux/action/rrAction';
 
 const RrDetails = () => {
 
-    const [search, setNewSearch] = useState("");
+const [search, setNewSearch] = useState("");
 
 const dispatch = useDispatch();
 const responseData = useSelector(state=>state.rrReducer.rrDetails)
@@ -33,7 +33,7 @@ const employeeId= localStorage.getItem('userId');
 
        <div>
        
-   {employeeId}
+   {/* {employeeId} */}
         <Table striped borderd hover variant="light">
             <thead>
                 <th>Employee Id Id</th>

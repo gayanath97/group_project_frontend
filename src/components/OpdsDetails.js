@@ -37,14 +37,14 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
      const filtered = !search
       ? responseData
       : responseData.filter((e)=>{
-          return e.employee== search.toLowerCase()
+          return e.sta_tus== search.toLowerCase()
          })
 
     return ( 
 
         <div>
           <br />
-          Filter opd by employee Id:{" "}
+          Filter Opds by status(pending/accepted/rejected):{" "}
       <input type="text" value={search} onChange={handleSearchChange} />
           <br />
           <br />
@@ -75,7 +75,11 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                <td>{opd.sta_tus}</td>
                                <td>
                                
-                               <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button>
+                               {/* <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button> */}
+
+                               <Button  variant="warning"> Accept</Button>
+                               <Button  variant="danger"> Reject</Button>
+
                                {/* <Button  onClick = {() => {
                                dispatch(DeleteOpdbillApiAction(opd.id))
                                alert("Your data has been deleted!")

@@ -23,11 +23,15 @@ import Expensebill from './screens/Expensebill';
 import Rrs from './screens/Rrs';
 import Opds from './screens/Opds';
 import Expenses from './screens/Expenses';
-import Admin from './screens/Manager';
+
 import Employees from './screens/Employees';
 import Rrbills from './screens/Rrbills';
 import Expensebills from './screens/Expensebills'
 import Manager from './screens/Manager';
+
+import Admin from './screens/Admin';
+import RewardAmount from './screens/RewardAmount';
+import OpdAmount from './screens/OpdAmount';
 
 
 function App() {
@@ -71,6 +75,9 @@ function App() {
                 <Route path='/rrbills' element={<Rrbills />} />
                 <Route path='/expensebills' element={<Expensebills />} />
 
+                <Route path='/admin' element={<Admin />} />
+                <Route path='/rewardamount' element={<RewardAmount />} />
+                <Route path='/opdamount' element={<OpdAmount />} />
                 
              </Routes>
            </Router>

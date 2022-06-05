@@ -29,7 +29,7 @@ useEffect(() => {
     ? responseData
     : responseData.filter((e)=>{
         // e.extensionNo.toLowerCase().includes(search.toLowerCase()) 
-        return e.employee == search.toLowerCase()
+        return e.sta_tus == search.toLowerCase()
     })
 
       const handleSearchChange = (e)=>{
@@ -41,7 +41,7 @@ useEffect(() => {
        <div>
        
         <br />
-          Filter RRs by employee Id:{" "}
+        Filter Rrs by status(pending/accepted/rejected):{" "}
       <input type="text" value={search} onChange={handleSearchChange} />
           <br />
           <br />
@@ -80,7 +80,12 @@ useEffect(() => {
                                </td>
                                <td>
                                {/* <buttton> <Link to={`/edit-rr/${rr.id}`} >Update</Link></buttton>  */}
-                               <Button variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button>
+
+                               {/* <Button variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button> */}
+
+                               <Button  variant="warning"> Accept</Button>
+                               <Button  variant="danger"> Reject</Button>
+
                                {/* <Button  onClick = {() => {
                                    dispatch(DeleteRrApiAction(rr.id))
                                    alert("Your data has been deleted!")

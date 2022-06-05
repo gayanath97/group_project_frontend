@@ -4,6 +4,7 @@ import RrReducer from "./rrReducer";
 import ExpenseReducer from "./expenseReducer"
 import ExpensebillReducer from "./expensebillReducer";
 import OpdReducer from "./opdReducer";
+import EmployeeReducer from "./employeeReducer";
 
 
 const rootReducer=combineReducers({
@@ -11,8 +12,8 @@ const rootReducer=combineReducers({
     rrbillReducer:RrbillReducer,
     expenseReducer:ExpenseReducer,
     expensebillReducer:ExpensebillReducer,
-    opdReducer:OpdReducer
-
+    opdReducer:OpdReducer,
+    employeeReducer:EmployeeReducer
 
 })
 
