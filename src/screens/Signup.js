@@ -1,4 +1,4 @@
-import '../style/LoginStyles.css';
+import '../style/screens/Signup.css';
 import React from "react";
 import { Link,useNavigate } from 'react-router-dom';
 import pk from "../img/pk.jpg"
@@ -68,74 +68,22 @@ const Signup = () => {
        
         {/* <form style={{backgroundColor:"orange"}}> */}
         <form>
-        <h3>Sign Up</h3>
-        <div className="form-group">
-            <label>First name</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="First name" 
-            name = "firstName"
-            value = {firstName}
-            onChange = {(e) => setfirstName(e.target.value)} 
-            />
-        </div>
-        <div className="form-group">
-            <label>Last name</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Last name"
-            name = "lastName"
-            value = {lastName}
-            onChange = {(e) => setlastName(e.target.value)} 
-            />
-        </div>
-        <div className="form-group">
-            <label>Email address</label>
-            <input 
-            type="email" 
-            className="form-control" 
-            placeholder="Enter email" 
-            name = "email"
-            value = {email}
-            onChange = {(e) => setemail(e.target.value)} 
-            />
-        </div>
-        <div className="form-group">
-            <label>UserName</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Enter userName"
-            name = "username"
-            value = {username}
-            onChange = {(e) => setusername(e.target.value)}  
-            />
-        </div>
-        <div className="form-group">
-            <label>Password</label>
-            <input 
-            type="password" 
-            className="form-control" 
-            placeholder="Enter password"
-            name = "password"
-            value = {password}
-            onChange = {(e) => setpassword(e.target.value)} 
-            />
-        </div> 
-        <div className="form-group">
-            <label>Phone Number</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Enter phone number"
-            name = "phoneNumber"
-            value = {phoneNumber}
-            onChange = {(e) => setphoneNumber(e.target.value)} 
-            />
-        </div>
-        <div className="form-group">
+        <div className="main">
+    <p className="sign" align="center">Sign up</p>
+    <form className="form1" />
+      <input className="un " type="text" align="center" placeholder="First Name" value = {firstName}
+            onChange = {(e) => setfirstName(e.target.value)} />
+      <input className="un " type="text" align="center" placeholder="Last Name" value = {lastName} onChange = {(e) => setlastName(e.target.value)} />
+      <input className="un " type="text" align="center" placeholder="Email" value = {email}
+            onChange = {(e) => setemail(e.target.value)} />
+      <input className="un " type="text" align="center" placeholder="Username" value = {username}
+            onChange = {(e) => setusername(e.target.value)}  />
+      <input className="pass" type="password" align="center" placeholder="Password"  value = {password}
+            onChange = {(e) => setpassword(e.target.value)} />
+      <input className="un " type="text" align="center" placeholder="Phone Number"  value = {phoneNumber}
+            onChange = {(e) => setphoneNumber(e.target.value)} />
+      <input className="un " type="text" align="center" placeholder="Role" />
+      <div className="un">
           <label>Select your role type:</label>
           <br />
 
@@ -143,18 +91,13 @@ const Signup = () => {
             onChange={
               (e)=>{
                 if(e.target.checked){
-  
                   arr.push(e.target.value)
                   role.push(e.target.value)
                   console.log(arr)
-                 
-                 
                 }
-                  
               }
-            }  
+            } 
             />ADMIN</label>
-
             <label><input type="checkbox" name="role" value="manager"
                         onChange={
                           (e)=>{
@@ -163,14 +106,10 @@ const Signup = () => {
                               arr.push(e.target.value)
                               role.push(e.target.value)
                               console.log(arr)
-                              
-                              
-                            }
-                              
+                            } 
                           }
                         } 
             />MANAGER</label>
-
             <label><input type="checkbox" name="role" value="user" 
                         onChange={
                           (e)=>{
@@ -178,30 +117,24 @@ const Signup = () => {
                               arr.push(e.target.value)
                               role.push(e.target.value)
                               console.log(arr)
-                                    
                             }
-                              
                           }
                         }
             />USER</label>
         </div>
-        
-        
         <Button onClick={(e)=>{
           console.log(arr)
           setrole(arr)
           console.log(role)
           signUpUsers(e)
           }} 
-          type="submit" className="btn btn-primary btn-block" size="lg">Sign Up</Button>
-        <p className="forgot-password text-right">
+          type="submit" className="un" size="lg">Sign Up</Button>
+        <p className="un">
            <b style={{color:"red"}}>Already registered</b>  <Link to="/" style={{color:"black"}}>sign in?</Link>
-        </p>
+        </p>      
+    </div> 
     </form> 
-    
-    </div>  
-    <br /> 
-    <br />  <br /> <br /><br /> <br /> <br /><br /><br />    
+    </div>      
     </div>
       );
 }
