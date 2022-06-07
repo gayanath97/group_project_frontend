@@ -47,26 +47,7 @@ const Signup = () => {
 
 
     return (  
-      <div style={{
-        
-        // backgroundImage:`url(${pk})`,
-        backgroundSize:"cover",
-        
-        
-      }}>
-          <br />
-          <br /> <br /> <br />
-        <div style={{
-
-        width:400,
-        margin: "auto",
-        alignContent : "center",
-        // border: "dashed",
-        // borderColor:"red"
-          
-       }}>
-       
-        {/* <form style={{backgroundColor:"orange"}}> */}
+      
         <form>
         <div className="main">
     <p className="sign" align="center">Sign up</p>
@@ -134,8 +115,7 @@ const Signup = () => {
         </p>      
     </div> 
     </form> 
-    </div>      
-    </div>
+    
       );
 }
  
