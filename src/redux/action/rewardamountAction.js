@@ -1,32 +1,33 @@
-import { GET_RR_DETAILS, POST_RR_DETAILS ,UPDATE_RR_DETAILS,DELETE_RR_DETAILS} from "../type" 
-import {GetRrApiDetails, PostRrApiDetails,UpdateRrApiDetails,DeleteRrApiDetails } from "../../services/RrsService";
+import {GET_REWARDAMOUNT_DETAILS, POST_REWARDAMOUNT_DETAILS,UPDATE_REWARDAMOUNT_DETAILS,DELETE_REWARDAMOUNT_DETAILS} from '../type'
+import {GetRewardamountApiDetails,PostRewardamountApiDetails,UpdateRewardamountApiDetails,DeleteRewardamountApiDetails} from '../../services/RewardamountService'
 
-const GetRrApiAction = () =>{
+
+const GetRewardAmountApiAction = () =>{
 
     return function(dispatach){
-        return GetRrApiDetails()
+        return GetRewardamountApiDetails()
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:GET_RR_DETAILS,
+                        type:GET_REWARDAMOUNT_DETAILS,
                         payload:res.data.payload[0]
                     });
                   });
                  
     };
 };
-const PostRrApiAction = (request) =>{
+const PostRewardAmountApiAction = (request) =>{
 
     return function(dispatach){
         dispatach({
-           type:POST_RR_DETAILS,
+           type:POST_REWARDAMOUNT_DETAILS,
            payload:false
         });
-        return PostRrApiDetails(request)
+        return PostRewardamountApiDetails(request)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:POST_RR_DETAILS,
+                        type:POST_REWARDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -34,18 +35,18 @@ const PostRrApiAction = (request) =>{
     };
 };
 
-const UpdateRrApiAction = (request,id) =>{
+const UpdateRewardAmountApiAction = (request,id) =>{
 
     return function(dispatach){
         dispatach({
-           type:UPDATE_RR_DETAILS,
+           type:UPDATE_REWARDAMOUNT_DETAILS,
            payload:false
         });
-        return  UpdateRrApiDetails(id,request)
+        return  UpdateRewardamountApiDetails(id,request)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:UPDATE_RR_DETAILS,
+                        type:UPDATE_REWARDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -53,18 +54,18 @@ const UpdateRrApiAction = (request,id) =>{
     };
 };
 
-const DeleteRrApiAction = (id) =>{
+const DeleteRewardAmountApiAction = (id) =>{
 
     return function(dispatach){
         dispatach({
-           type:DELETE_RR_DETAILS,
+           type:DELETE_REWARDAMOUNT_DETAILS,
            payload:false
         });
-        return DeleteRrApiDetails(id)
+        return DeleteRewardamountApiDetails(id)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:DELETE_RR_DETAILS,
+                        type:DELETE_REWARDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -72,4 +73,4 @@ const DeleteRrApiAction = (id) =>{
     };
 };
 
-export {GetRrApiAction,PostRrApiAction,UpdateRrApiAction,DeleteRrApiAction};
+export {GetRewardAmountApiAction,PostRewardAmountApiAction,UpdateRewardAmountApiAction,DeleteRewardAmountApiAction};

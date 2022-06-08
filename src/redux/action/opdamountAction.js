@@ -1,32 +1,33 @@
-import { GET_RR_DETAILS, POST_RR_DETAILS ,UPDATE_RR_DETAILS,DELETE_RR_DETAILS} from "../type" 
-import {GetRrApiDetails, PostRrApiDetails,UpdateRrApiDetails,DeleteRrApiDetails } from "../../services/RrsService";
+import {GET_OPDAMOUNT_DETAILS, POST_OPDAMOUNT_DETAILS,UPDATE_OPDAMOUNT_DETAILS,DELETE_OPDAMOUNT_DETAILS} from '../type'
+import {GetOpdamountApiDetails,PostOpdamountApiDetails,UpdateOpdamountApiDetails,DeleteOpdamountApiDetails} from '../../services/OpdamountService'
 
-const GetRrApiAction = () =>{
+
+const GetOpdAmountApiAction = () =>{
 
     return function(dispatach){
-        return GetRrApiDetails()
+        return GetOpdamountApiDetails()
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:GET_RR_DETAILS,
+                        type:GET_OPDAMOUNT_DETAILS,
                         payload:res.data.payload[0]
                     });
                   });
                  
     };
 };
-const PostRrApiAction = (request) =>{
+const PostOpdAmountApiAction = (request) =>{
 
     return function(dispatach){
         dispatach({
-           type:POST_RR_DETAILS,
+           type:POST_OPDAMOUNT_DETAILS,
            payload:false
         });
-        return PostRrApiDetails(request)
+        return PostOpdamountApiDetails(request)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:POST_RR_DETAILS,
+                        type:POST_OPDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -34,18 +35,18 @@ const PostRrApiAction = (request) =>{
     };
 };
 
-const UpdateRrApiAction = (request,id) =>{
+const UpdateOpdAmountApiAction = (request,id) =>{
 
     return function(dispatach){
         dispatach({
-           type:UPDATE_RR_DETAILS,
+           type:UPDATE_OPDAMOUNT_DETAILS,
            payload:false
         });
-        return  UpdateRrApiDetails(id,request)
+        return  UpdateOpdamountApiDetails(id,request)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:UPDATE_RR_DETAILS,
+                        type:UPDATE_OPDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -53,18 +54,18 @@ const UpdateRrApiAction = (request,id) =>{
     };
 };
 
-const DeleteRrApiAction = (id) =>{
+const DeleteOpdAmountApiAction = (id) =>{
 
     return function(dispatach){
         dispatach({
-           type:DELETE_RR_DETAILS,
+           type:DELETE_OPDAMOUNT_DETAILS,
            payload:false
         });
-        return DeleteRrApiDetails(id)
+        return DeleteOpdamountApiDetails(id)
                   .then((res)=>{
                     console.log('Response Data is _____',res);
                     dispatach({
-                        type:DELETE_RR_DETAILS,
+                        type:DELETE_OPDAMOUNT_DETAILS,
                         payload:true
                     });
                   });
@@ -72,4 +73,4 @@ const DeleteRrApiAction = (id) =>{
     };
 };
 
-export {GetRrApiAction,PostRrApiAction,UpdateRrApiAction,DeleteRrApiAction};
+export {GetOpdAmountApiAction,PostOpdAmountApiAction,UpdateOpdAmountApiAction,DeleteOpdAmountApiAction};
