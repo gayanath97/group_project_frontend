@@ -6,6 +6,7 @@ import ExpensebillReducer from "./expensebillReducer";
 import OpdReducer from "./opdReducer";
 import EmployeeReducer from "./employeeReducer";
 import opdamountReducer from "./opdamountReducer";
+import rewardamountReducer from "./rewardamountReducer";
 
 
 const rootReducer=combineReducers({
@@ -15,7 +16,8 @@ const rootReducer=combineReducers({
     expensebillReducer:ExpensebillReducer,
     opdReducer:OpdReducer,
     employeeReducer:EmployeeReducer,
-    OpdamountReducer:opdamountReducer
+    OpdamountReducer:opdamountReducer,
+    RewardamountReducer:rewardamountReducer
 
 })
 

@@ -32,6 +32,7 @@ import Manager from './screens/Manager';
 import Admin from './screens/Admin';
 import RewardAmount from './screens/RewardAmount';
 import OpdAmount from './screens/OpdAmount';
+import AddReward from './screens/AddReward';
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
 
                 <Route path='/admin' element={<Admin />} />
                 <Route path='/rewardamount' element={<RewardAmount />} />
+                <Route path='/addreward' element={<AddReward />} />
                 <Route path='/opdamount' element={<OpdAmount />} />
                 
              </Routes>

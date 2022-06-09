@@ -1,6 +1,13 @@
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import RewardAmountDetails from "../components/RewardAmountDetails";
+
 const RewardAmount = () => {
     return ( 
-        <h1>RewardAmoun</h1>
+        <div>
+        <Link to='/addreward'><Button>Add Reward Amount to an employee</Button></Link>
+        <RewardAmountDetails />
+        </div>
      );
 }
  
