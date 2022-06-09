@@ -17,10 +17,10 @@ const Expense = () => {
        <br />
        <Button variant="info" ><Link to="/addexpense">Add a claim</Link></Button>
        <ExpenseDetails />
-       <br />
-       
-       <br />
-       <Footer />
+      
+       <div className='footer-div'>
+          <Footer />
+        </div>
 
        </div>
 

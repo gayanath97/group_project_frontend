@@ -10,7 +10,11 @@ const Rrbill = () => {
             <Button variant="info"><Link to='/addrrbill'>Add a bill</Link></Button>
             <RrbillDetails />
             <Button variant="danger"><Link to='/rr'>Go to RR Home Page</Link></Button>
-            <Footer />
+            <div className='footer-div'>
+            <div className='footer-div'>
+          <Footer />
+        </div>
+        </div>
             
         </div>
      );

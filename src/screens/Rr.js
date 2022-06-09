@@ -18,7 +18,9 @@ const Rr = () => {
        <br />
        
        <br />
-       <Footer />
+       <div className='footer-div'>
+          <Footer />
+        </div>
 
        </div>
 

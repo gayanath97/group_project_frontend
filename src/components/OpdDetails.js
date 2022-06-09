@@ -48,7 +48,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
           <br /> */}
 <Table striped borderd hover variant="light">
             <thead>
-            <th>Employee Id Id</th>
+            <th>Employee Id </th>
                 <th>Opd Id</th>
                 <th>Amount</th>
                 <th>Particulars</th>

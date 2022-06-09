@@ -63,7 +63,7 @@ const Signup = () => {
             onChange = {(e) => setpassword(e.target.value)} />
       <input className="un " type="text" align="center" placeholder="Phone Number"  value = {phoneNumber}
             onChange = {(e) => setphoneNumber(e.target.value)} />
-      <input className="un " type="text" align="center" placeholder="Role" />
+    
       <div className="un">
           <label>Select your role type:</label>
           <br />

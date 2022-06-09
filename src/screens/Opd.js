@@ -17,9 +17,10 @@ const Opd = () => {
         <Button variant="info" ><Link to="/addopd">Add a claim</Link></Button>
         <OpdDetails />
         
-        <br />
-        <Footer />
-
+        <br /><br />
+        <div className='footer-div'>
+          <Footer />
+        </div>
         </div>
 
      );

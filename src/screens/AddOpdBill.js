@@ -16,7 +16,9 @@ const AddOpdbill = () => {
              <Button variant='danger' size="lg"><Link to="/opd"> Cancel </Link></Button>
         </div>
         
-        <Footer />
+        <div className='footer-div'>
+          <Footer />
+        </div>
         
 
         </div>

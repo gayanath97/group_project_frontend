@@ -13,7 +13,9 @@ const Expensebill = () => {
             <ExpensebillDetails />
             <Button variant="danger"><Link to='/expense'>Go to Expense Home Page</Link></Button>
 
-            <Footer />
+            <div className='footer-div'>
+          <Footer />
+        </div>
         </div>
      );
 }

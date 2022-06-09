@@ -16,7 +16,9 @@ const AddRrbill = () => {
              <Button variant='danger' size="lg"><Link to="/rr"> Cancel </Link></Button>
         </div>
         
-        <Footer />
+        <div className='footer-div'>
+          <Footer />
+        </div>
 
         </div>
 

@@ -54,7 +54,9 @@ const ClaimType = () => {
                 <br />
                 <br />
         </div>
-                <Footer /> 
+        <div className='footer-div'>
+          <Footer />
+        </div>
                 
      </div>
 

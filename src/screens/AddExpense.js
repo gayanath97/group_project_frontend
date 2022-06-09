@@ -16,7 +16,9 @@ const AddExpense = () => {
         <Button variant='danger' size="lg"><Link to="/expense">Cancel</Link></Button>
         <br />
         <br />
-        <Footer />
+        <div className='footer-div'>
+          <Footer />
+        </div>
 
         </div>
 

@@ -17,7 +17,9 @@ const AddRr = () => {
         <Button variant='danger' size="lg"><Link to="/rr">Cancel</Link></Button>
         <br />
         <br />
-        <Footer />
+        <div className='footer-div'>
+          <Footer />
+        </div>
 
         </div>
      );
