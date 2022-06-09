@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link} from "react-router-dom";
 import Button from 'react-bootstrap/Button'
-import { GetRewardAmountApiAction,DeleteRewardAmountApiAction } from '../redux/action/rewardamountAction';
+import { GetOpdAmountApiAction,DeleteOpdAmountApiAction } from '../redux/action/opdamountAction';
 import {useState,useEffect} from 'react';
 import Table from 'react-bootstrap/Table'
 
-const RewardAmountDetails = () => {
+const OpdAmountDetails = () => {
 
 
 const dispatch = useDispatch();
-const responseData = useSelector(state=>state.RewardamountReducer.rewardamountDetails)
-const isDeleteResponse = useSelector(state=>state.RewardamountReducer.isDeleteResponse)
+const responseData = useSelector(state=>state.OpdamountReducer.opdamountDetails)
+const isDeleteResponse = useSelector(state=>state.OpdamountReducer.isDeleteResponse)
    
    useEffect(() => {
-    dispatch(GetRewardAmountApiAction());
+    dispatch(GetOpdAmountApiAction());
     console.log(responseData);
     }, [dispatch])
 
@@ -26,7 +26,7 @@ const isDeleteResponse = useSelector(state=>state.RewardamountReducer.isDeleteRe
                 <th>RewardId</th>
                 <th>ExpireDate</th>
                 <th>Amount</th>
-                <th>AddedDate</th>
+                {/* <th>AddedDate</th> */}
                 <th>Actions</th>
             </thead>
             <tbody>
@@ -34,19 +34,19 @@ const isDeleteResponse = useSelector(state=>state.RewardamountReducer.isDeleteRe
              responseData?  
              responseData.map(
 
-                        reward =>{
+                        opd=>{
                             
                         return(
-                        <tr key={reward.rewardId}>
-                               <td>{reward.employee}</td> 
-                               <td>{reward.rewardId}</td>
-                               <td>{reward.expireDate}</td>
-                               <td>{reward.amount}</td>
-                               <td>{reward.addedDate}</td>
+                        <tr key={opd.id}>
+                               <td>{opd.employee}</td> 
+                               <td>{opd.id}</td>
+                               <td>{opd.expireDate}</td>
+                               <td>{opd.amount}</td>
+                               {/* <td>{opd.addedDate}</td> */}
                                <td>
-                               <Button variant="warning"> <Link to={`/edit-reward/${reward.rewardId}`} >Update</Link></Button>
+                               <Button variant="warning"> <Link to={`/edit-opdamount/${opd.id}`} >Update</Link></Button>
                                <Button  onClick = {() => {
-                                   dispatch(DeleteRewardAmountApiAction(reward.rewardId))
+                                   dispatch(DeleteOpdAmountApiAction(opd.id))
                                    alert("Your data has been deleted!")
                                    window.location.reload(false)
                                 }}
@@ -65,4 +65,4 @@ const isDeleteResponse = useSelector(state=>state.RewardamountReducer.isDeleteRe
      );
 }
  
-export default RewardAmountDetails;
+export default OpdAmountDetails;

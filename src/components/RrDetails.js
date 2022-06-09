@@ -36,7 +36,7 @@ const employeeId= localStorage.getItem('userId');
    {/* {employeeId} */}
         <Table striped borderd hover variant="light">
             <thead>
-                <th>Employee Id Id</th>
+                <th>Employee Id</th>
                 <th>Rr Id</th>
                 <th>Rr ExtensionNo</th>
                 <th>Rr Customer</th>

@@ -33,6 +33,7 @@ import Admin from './screens/Admin';
 import RewardAmount from './screens/RewardAmount';
 import OpdAmount from './screens/OpdAmount';
 import AddReward from './screens/AddReward';
+import AddOpdAmount from './screens/AddOpdAmount';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
     <div >
            <Router>
              <Routes>
-
+                
                 
                 <Route exact path='/' element={<Login />} />
                 <Route path='/signup' element={<Signup />} />
@@ -79,7 +80,10 @@ function App() {
                 <Route path='/admin' element={<Admin />} />
                 <Route path='/rewardamount' element={<RewardAmount />} />
                 <Route path='/addreward' element={<AddReward />} />
+                <Route path="/edit-reward/:id" element={<AddReward />} />
                 <Route path='/opdamount' element={<OpdAmount />} />
+                <Route path='/addopdamount' element={<AddOpdAmount />} />
+                <Route path="/edit-opdamount/:id" element={<AddOpdAmount />} />
                 
              </Routes>
            </Router>

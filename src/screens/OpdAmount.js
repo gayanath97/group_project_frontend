@@ -1,7 +1,12 @@
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import OpdAmountDetails from "../components/OpdAmountDetails";
+
 const OpdAmount = () => {
     return ( 
         <div>
-            <h1>opd amount</h1>
+            <Link to='/addopdamount'><Button>Add Opd Amount to an employee</Button></Link>
+            <OpdAmountDetails />
         </div>
      );
 }
