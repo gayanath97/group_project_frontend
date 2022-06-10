@@ -30,13 +30,28 @@ const Login = () => {
             localStorage.setItem("lastName",lastName);
             let userId =response.data.id;
             localStorage.setItem("userId",userId);
-            console.log(response.data)    
-            navigate('/claimtype')
+            let roles =response.data.roles[0];
+            localStorage.setItem("roles",roles);
+            console.log(response.data) 
+            
+            if(localStorage.getItem("roles")=="ROLE_USER"){
+              navigate('/claimtype')
+            }
+            if(localStorage.getItem("roles")=="ROLE_ADMIN"){
+              navigate('/admin')
+            }
+            if(localStorage.getItem("roles")=="ROLE_MANAGER"){
+              navigate('/manager')
+            }
+
+           
         }
         )
         .catch(
             error => {
             console.log(error)
+            window.alert("wrong username/password");
+            window.location.reload()
         }
         )
 

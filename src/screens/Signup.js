@@ -17,9 +17,11 @@ const Signup = () => {
   const [password,setpassword]=useState("")
   const [phoneNumber,setphoneNumber]=useState("")
   const [role,setrole]=useState([])
+  const [rol,setrol]=useState("")
   
 
   var arr=[]
+  var arr2 = [""]
 
   const navigate = useNavigate();
 
@@ -44,6 +46,8 @@ const Signup = () => {
         )
 
   }
+
+  
 
 
     return (  
@@ -135,11 +139,18 @@ const Signup = () => {
             onChange = {(e) => setphoneNumber(e.target.value)} 
             />
         </div>
-        <div className="form-group">
+
+        <div >
+             <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="admin" name="role"  /> Admin
+             <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="manager" name="role"  /> Manager
+             <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="user" name="role"  /> User
+        </div>
+        {/* <div className="form-group">
+
           <label>Select your role type:</label>
           <br />
 
-            <label><input type="checkbox" name="role" value="admin" 
+            <label><input type="radio" name="role" value="admin" 
             onChange={
               (e)=>{
                 if(e.target.checked){
@@ -155,7 +166,7 @@ const Signup = () => {
             }  
             />ADMIN</label>
 
-            <label><input type="checkbox" name="role" value="manager"
+            <label><input type="radio" name="role" value="manager"
                         onChange={
                           (e)=>{
                             if(e.target.checked){
@@ -171,7 +182,7 @@ const Signup = () => {
                         } 
             />MANAGER</label>
 
-            <label><input type="checkbox" name="role" value="user" 
+            <label><input type="radio" name="role" value="user" 
                         onChange={
                           (e)=>{
                             if(e.target.checked){
@@ -184,12 +195,12 @@ const Signup = () => {
                           }
                         }
             />USER</label>
-        </div>
+        </div> */}
         
         
         <Button onClick={(e)=>{
+          role[0]=arr[0];
           console.log(arr)
-          setrole(arr)
           console.log(role)
           signUpUsers(e)
           }} 
