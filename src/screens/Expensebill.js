@@ -12,7 +12,7 @@ const Expensebill = () => {
             <Button variant="info"><Link to='/addexpensebill'>Add a bill</Link></Button>
             <ExpensebillDetails />
             <Button variant="danger"><Link to='/expense'>Go to Expense Home Page</Link></Button>
-
+<br/><br/>
             <div className='footer-div'>
           <Footer />
         </div>

@@ -1,28 +1,27 @@
-import RrBillDetails from '../components/RrbillDetails';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
-import RrForm from '../components/RrForm';
-import { Button } from 'react-bootstrap';
+import RrBillDetails from "../components/RrbillDetails";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import RrForm from "../components/RrForm";
+import { Button } from "react-bootstrap";
 
 const AddRr = () => {
-    return ( 
+  return (
+    <div>
+      <Header />
 
-        <div>
+      <RrForm />
 
-        <Header />
-       
-        <RrForm />
-        
-        <Button variant='danger' size="lg"><Link to="/rr">Cancel</Link></Button>
-        <br />
-        <br />
-        <div className='footer-div'>
-          <Footer />
-        </div>
+      <Button variant="danger" size="lg">
+        <Link to="/rr">Cancel</Link>
+      </Button>
+      <br />
+      <br />
+      <div className="footer-div">
+        <Footer />
+      </div>
+    </div>
+  );
+};
 
-        </div>
-     );
-}
- 
 export default AddRr;

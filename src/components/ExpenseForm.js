@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import ExpensesService from "../services/ExpensesService";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   PostExpenseApiAction,
@@ -194,9 +195,9 @@ const ExpenseForm = () => {
 				</div>
 				<div className="right">
 					<form className="container" >
-                    <div>
+                   {/* <div>
           <label> EMPLOYEE ID No:{employeeId}</label>
-        </div>
+      </div> */}
 
 						
 						<input
@@ -255,6 +256,9 @@ const ExpenseForm = () => {
             size="lg"> 
 						Submit
 						</button></div>
+            <div>
+            <Button className="green_btn" variant='danger' size="lg"><Link to="/expense">Cancel</Link></Button>
+            </div>
 					</form>
 				</div>
 			</div>
