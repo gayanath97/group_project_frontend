@@ -13,7 +13,7 @@ const AddExpense = () => {
        
         <ExpenseForm />
         
-        <Button variant='danger' size="lg"><Link to="/expense">Cancel</Link></Button>
+        <Button variant='danger' size="lg"><Link to="/expense">cancel</Link></Button>
         <br />
         <br />
         <Footer />
