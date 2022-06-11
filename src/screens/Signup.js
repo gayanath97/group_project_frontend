@@ -42,6 +42,8 @@ const Signup = () => {
         .catch(
             error => {
             console.log(error)
+            window.alert("username/email is already exist.Try again");
+            window.location.reload()
         }
         )
 

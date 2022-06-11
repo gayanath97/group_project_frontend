@@ -50,7 +50,7 @@ const Login = () => {
         .catch(
             error => {
             console.log(error)
-            window.alert("wrong username/password");
+            window.alert("wrong username/password.Try again");
             window.location.reload()
         }
         )
