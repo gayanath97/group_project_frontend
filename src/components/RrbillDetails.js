@@ -3,6 +3,7 @@ import {Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import { useNavigate } from "react-router-dom";
+import '../style/components/Form.css'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { GetRrbillApiAction,DeleteRrbillApiAction } from '../redux/action/rrbillAction';
@@ -84,8 +85,8 @@ const RrbillDetails = () => {
                                <td>{rrbill.particulars}</td>
                                <td>{rrbill.date}</td>
                                <td>
-                              <Button variant="warning"> <Link to={`/edit-rrbill/${rrbill.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                              <Button className="green_btn" variant="warning"> <Link to={`/edit-rrbill/${rrbill.id}`} >Update</Link></Button>
+                               <Button className="green_btn"  onClick = {() => {
                                dispatch(DeleteRrbillApiAction(rrbill.id))
                                alert("Your data has been deleted!")
                                window.location.reload(false)

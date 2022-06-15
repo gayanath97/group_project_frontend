@@ -120,9 +120,9 @@ const AddRrbill = () => {
 
     const title = ()=>{
         if(idd){
-                return <h2 >Update Rrbill</h2>
+                return <h2 style={{textAlign:'center'}}>Update Rrbill</h2>
         }else{
-               return <h2>Add Rrbill</h2>
+               return <h2 style={{textAlign:'center'}}>Add Rrbill</h2>
         }
     }
 
@@ -134,21 +134,30 @@ const AddRrbill = () => {
          <div>
             
             {title()}
-            
+            <div className="signup_container">
+          
+          <div className="signup_form_container">  
+         
+          <div className="left">
+                      <h1>Add your RR BILL details</h1>
+                      
+          </div>    
+          <div className="right"> 
                 
              
-             <form>
-             <div>
+             <form className="container">
+             {/* <div>
                                  <label > RR ID No:{rrId}</label>
                                  
-             </div>
-
+             </div> */}
+             <br />
              <div>
-                                 <label > Extensio No:</label>
+                                 {/* <div><label > Extensio No:</label></div> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter Extension No"
                                      name = "extensionNo"
+                                     className="input"
                                      value = {extensionNo}
                                      onChange = {(e) => setextensionNo(e.target.value)}
                                  >
@@ -156,33 +165,36 @@ const AddRrbill = () => {
              </div>
 
              <div>
-                                 <label > Amount :</label>
+                                 {/* <div><label > Amount :</label></div> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter amount"
                                      name = "amount"
+                                     className="input"
                                      value = {amount}
                                      onChange = {(e) => setamount(e.target.value)}
                                  >
                                  </input>
              </div>
              <div>
-                                 <label > Particulars :</label>
+                                 {/* <div><label > Particulars :</label></div> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter particulars"
                                      name = "particulars"
+                                     className="input"
                                      value = {particulars}
                                      onChange = {(e) => setparticulars(e.target.value)}
                                  >
                                  </input>
              </div>
              <div>
-                                 <label > Date :</label>
+                                 <div><label > Date :</label></div>
                                  <input
                                      type = "date"
                                      placeholder = "Enter date"
                                      name = "date"
+                                     className="input"
                                      value = {date}
                                      onChange = {(e) => {
                                          setdate(e.target.value);
@@ -193,26 +205,31 @@ const AddRrbill = () => {
              </div>
              
              <br />
-             <input type="file" onChange={handleFileSelect}/>
+             <input className="input" type="file" onChange={handleFileSelect}/>
 
              <br / >
             {/* <RrBillUpload /> */}
 
              <div>
-             <Button onClick={(e)=>{
+             <Button className="green_btn" onClick={(e)=>{
                 // console.log(rr);
                  saveOrUpdateRrbill(e);
                  handleSubmit(e);
                  }
                  } variant='warning' size="lg">Submit </Button>
              </div>
+             <div>
+             <Button className="green_btn" variant='danger' size="lg"><Link to="/rrbilldetails"> Cancel </Link></Button>
+        </div>
              <br />
              
              
                  
              </form>
 
-             
+             </div>
+        </div>
+        </div>
 
 
          </div>

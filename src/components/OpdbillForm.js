@@ -1,9 +1,11 @@
+import '../style/components/Form.css'
 import { Button } from "react-bootstrap"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 import {PostOpdbillApiAction,UpdateOpdbillApiAction} from '../redux/action/opdAction'
 import { useDispatch, useSelector } from "react-redux";
@@ -115,31 +117,44 @@ if(isResponse){
 
     const title = ()=>{
         if(id){
-                return <h2 >Update Opd Bill</h2>
+                return <h2 style={{textAlign:'center'}}>Update Opd Bill</h2>
         }else{
-               return <h2>Add Opd Bill</h2>
+               return <h2 style={{textAlign:'center'}}>Add Opd Bill</h2>
         }
       }
     return ( 
         
-
         <div>
+             {title()}
+       
+        <div className="signup_container">
           
-          {title()}
+        <div className="signup_form_container">  
+       
+        <div className="left">
+					<h1>Add your OPD details</h1>
+					
+		</div> 
+          
+          <div className="right">
+          <form lassName="container">
 
-          <form>
-
-          <div>
+          {/* <div >
                                  <label > EMPLOYEE ID No:{employeeId}</label>
                                  
-             </div>    
+           </div>   */}
 
           <div>
+            
+         <br />
+                                  <div>
                                  <label > Amount :</label>
+                                 </div>
                                  <input
                                      type = "text"
                                      placeholder = "Enter amount"
                                      name = "amount"
+                                     className="input"
                                      value = {amount}
                                      onChange = {(e) => setamount(e.target.value)}
                                  >
@@ -147,11 +162,14 @@ if(isResponse){
              </div>
 
              <div>
+                <div>
                                  <label > Particulars :</label>
+                                 </div>
                                  <input
                                      type = "text"
                                      placeholder = "Enter particulars"
                                      name = "particulars"
+                                     className="input"
                                      value = {particulars}
                                      onChange = {(e) => setparticulars(e.target.value)}
                                  >
@@ -159,11 +177,15 @@ if(isResponse){
              </div>
 
              <div>
-                                 <label > Date :</label>
+                <div>
+                <label > Date :</label>
+                </div>
+                                 
                                  <input
                                      type = "date"
                                      placeholder = "Enter date"
                                      name = "date"
+                                     className="input"
                                      value = {date}
                                      onChange = {(e) => setdate(e.target.value)}
                                  >
@@ -171,25 +193,30 @@ if(isResponse){
              </div>
 
              <div>
-             <input type="file" onChange={handleFileSelect}/>
+             <input className="input" type="file" onChange={handleFileSelect}/>
              </div>
              <br / >
              <br / >
 
              <div>
-             <Button onClick={
+             <Button className="green_btn" onClick={
                  (e)=>{
                      saveOrUpdateOpdBill(e);
                      handleSubmit(e);
                     }
                  } variant='warning' size="lg">Submit</Button>
              </div>
+             <div>
+             <Button className="green_btn" variant='danger' size="lg"><Link to="/opd"> Cancel </Link></Button>
+        </div>
              <br /> 
 
           </form>
 
         </div>
-    
+        </div>
+        </div>
+        </div>
 
      );
 }

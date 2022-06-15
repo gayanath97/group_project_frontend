@@ -9,10 +9,13 @@ const Expensebill = () => {
         <div>
             <Header />
 
-            <Button variant="info"><Link to='/addexpensebill'>Add a bill</Link></Button>
+            <Button className="green_btn" variant="info"><Link to='/addexpensebill'>Add a bill</Link></Button>
             <ExpensebillDetails />
-            <Button variant="danger"><Link to='/expense'>Go to Expense Home Page</Link></Button>
-
+            <Button className="green_btn" variant="danger"><Link to='/expense'>Go to Expense Home Page</Link></Button>
+            <br />
+        <br /><br />
+        <br /><br />
+        <br />
             <Footer />
         </div>
      );

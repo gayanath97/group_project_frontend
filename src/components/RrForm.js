@@ -6,6 +6,8 @@ import {PostRrApiAction,UpdateRrApiAction} from '../redux/action/rrAction'
 import { useDispatch, useSelector } from "react-redux";
 import { GetRrDetailsById } from "../services/RrsService";
 
+import '../style/components/Form.css'
+
 const RrForm = () => {
     const [extensionNo,setextensionNo]=useState("")
     const [customer,setcustomer]=useState("")
@@ -78,9 +80,9 @@ const RrForm = () => {
 
     const title = ()=>{
         if(id){
-                return <h2 >Update Rr</h2>
+                return <h2 style={{textAlign:'center'}}>Update Rr</h2>
         }else{
-               return <h2>Add Rr</h2>
+               return <h2 style={{textAlign:'center'}}>Add Rr</h2>
         }
     }
 
@@ -92,43 +94,54 @@ const RrForm = () => {
          <div>
             
             {title()}
-                
-             
-            <form >
+            <div className="signup_container">
+          
+          <div className="signup_form_container">  
+         
+          <div className="left">
+                      <h1>Add your RR details</h1>
+                      
+          </div>    
+          <div className="right"> 
+            <form className="container">
 
-            <div>
+            {/* <div>
                                  <label > EMPLOYEE ID No:{employeeId}</label>
                                  
-             </div>   
+             </div>    */}
 
              <div>
-                                 <label > ExtensionNo :</label>
+             <br />
+                                 <div><label > ExtensionNo :</label></div>
                                  <input
                                      type = "text"
                                      placeholder = "Enter extensionNo"
                                      name = "extensionNo"
+                                     className="input"
                                      value = {extensionNo}
                                      onChange = {(e) => setextensionNo(e.target.value)}
                                  >
                                  </input>
              </div>
              <div>
-                                 <label > Customer :</label>
+                                 <div><label > Customer :</label></div>
                                  <input
                                      type = "text"
                                      placeholder = "Enter customer"
                                      name = "customer"
+                                     className="input"
                                      value = {customer}
                                      onChange = {(e) => setcustomer(e.target.value)}
                                  >
                                  </input>
              </div>
              <div>
-                                 <label > Location :</label>
+                                <div> <label > Location :</label></div>
                                  <input
                                      type = "text"
                                      placeholder = "Enter location"
                                      name = "location"
+                                     className="input"
                                      value = {location}
                                      onChange = {(e) => setlocation(e.target.value)}
                                  >
@@ -143,15 +156,19 @@ const RrForm = () => {
             
         
              <div>
-             <Button onClick={(e)=>{saveOrUpdateRr(e)}} variant='warning' size="lg">Submit</Button>
+             <Button className="green_btn" onClick={(e)=>{saveOrUpdateRr(e)}} variant='warning' size="lg">Submit</Button>
              </div>
-             <br />
+            <div>
+            <Button className="green_btn" variant='danger' size="lg"><Link to="/rr">Cancel</Link></Button>
+            </div>
             
              
                  
              </form>
 
-             
+             </div>
+        </div>
+        </div>     
 
 
          </div>

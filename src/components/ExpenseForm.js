@@ -3,10 +3,13 @@ import { Button } from "react-bootstrap";
 import ExpensesService from "../services/ExpensesService"
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {PostExpenseApiAction,UpdateExpenseApiAction} from '../redux/action/expenseAction'
 import { useDispatch, useSelector } from "react-redux";
 import { GetExpenseDetailsById } from "../services/ExpensesService";
+
+import '../style/components/Form.css'
 
 const ExpenseForm = () => {
 
@@ -88,9 +91,9 @@ const ExpenseForm = () => {
 
    const title = ()=>{
      if(id){
-             return <h2 >Update Expense</h2>
+             return <h2 style={{textAlign:'center'}}>Update Expense</h2>
      }else{
-            return <h2>Add Expense</h2>
+            return <h2 style={{textAlign:'center'}}>Add Expense</h2>
      }
    }
 
@@ -100,20 +103,30 @@ const ExpenseForm = () => {
          <div>
              
              {title()}
+             <div className="signup_container">
+          
+          <div className="signup_form_container">  
+         
+          <div className="left">
+                      <h1>Add your Expense details</h1>
+                      
+          </div>    
+          <div className="right"> 
 
-             <form>
+             <form className="container">
 
-             <div>
+             {/* <div>
                                  <label > EMPLOYEE ID No:{employeeId}</label>
                                  
-             </div>      
+             </div>       */}
 
              <div>
-                                 <label > BuOrDept :</label>
+                                 {/* <div><label > BuOrDept :</label></div> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter buOrDept"
                                      name = "buOrDept"
+                                     className="input"
                                      value = {buOrDept}
                                      onChange = {(e) => setbuOrDept(e.target.value)}
                                  >
@@ -121,11 +134,12 @@ const ExpenseForm = () => {
              </div>
 
              <div>
-                                 <label > Project :</label>
+                                 {/* <label > Project :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter project"
                                      name = "project"
+                                     className="input"
                                      value = {project}
                                      onChange = {(e) => setproject(e.target.value)}
                                  >
@@ -133,11 +147,12 @@ const ExpenseForm = () => {
              </div>
 
              <div>
-                                 <label > ExtensionNo :</label>
+                                 {/* <label > ExtensionNo :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter extensionNo"
                                      name = "extensionNo"
+                                     className="input"
                                      value = {extensionNo}
                                      onChange = {(e) => setextensionNo(e.target.value)}
                                  >
@@ -145,11 +160,12 @@ const ExpenseForm = () => {
              </div>
 
              <div>
-                                 <label > Customer :</label>
+                                 {/* <label > Customer :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter customer"
                                      name = "customer"
+                                     className="input"
                                      value = {customer}
                                      onChange = {(e) => setcustomer(e.target.value)}
                                  >
@@ -157,11 +173,12 @@ const ExpenseForm = () => {
              </div>
 
              <div>
-                                 <label > Location :</label>
+                                 {/* <label > Location :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter location"
                                      name = "location"
+                                     className="input"
                                      value = {location}
                                      onChange = {(e) => setlocation(e.target.value)}
                                  >
@@ -169,11 +186,12 @@ const ExpenseForm = () => {
              </div>
 
              <div>
-                                 <label > Billability :</label>
+                                 {/* <label > Billability :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter billability"
                                      name = "billability"
+                                     className="input"
                                      value = {billability}
                                      onChange = {(e) => setbillability(e.target.value)}
                                  >
@@ -187,12 +205,15 @@ const ExpenseForm = () => {
             
         
              <div>
-             <Button onClick={(e)=>{saveOrUpdateExpense(e)}} variant='warning' size="lg">Submit</Button>
+             <Button className="green_btn" onClick={(e)=>{saveOrUpdateExpense(e)}} variant='warning' size="lg">Submit</Button>
+             <Button className="green_btn" variant='danger' size="lg"><Link to="/expense">Cancel</Link></Button>
              </div>
              <br />
 
              </form>
-
+             </div>
+             </div>
+             </div>
 
          </div>
 

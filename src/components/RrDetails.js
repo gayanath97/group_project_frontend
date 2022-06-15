@@ -6,6 +6,8 @@ import Table from 'react-bootstrap/Table'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetRrApiAction,DeleteRrApiAction } from '../redux/action/rrAction';
 
+import '../style/components/Form.css'
+
 
 const RrDetails = () => {
 
@@ -61,7 +63,7 @@ const employeeId= localStorage.getItem('userId');
                                <td>{rr.location}</td>
                                <td>{rr.sta_tus}</td>
                                <td>
-                               <Button onClick={()=>{
+                               <Button className="green_btn" onClick={()=>{
                                    localStorage.setItem('extNo', rr.extensionNo);
                                    localStorage.setItem('rrId',rr.id);
                                    console.log(localStorage.getItem('rrId'))
@@ -69,8 +71,8 @@ const employeeId= localStorage.getItem('userId');
                                </td>
                                <td>
                                {/* <buttton> <Link to={`/edit-rr/${rr.id}`} >Update</Link></buttton>  */}
-                               <Button variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                               <Button className="green_btn" variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button>
+                               <Button  className="green_btn" onClick = {() => {
                                    dispatch(DeleteRrApiAction(rr.id))
                                    alert("Your data has been deleted!")
                                    window.location.reload(false)

@@ -12,9 +12,9 @@ const AddOpdbill = () => {
         <Header />
         <OpdbillForm />
         
-        <div>
+        {/* <div>
              <Button variant='danger' size="lg"><Link to="/opd"> Cancel </Link></Button>
-        </div>
+        </div> */}
         
         <Footer />
         

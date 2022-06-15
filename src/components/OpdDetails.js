@@ -73,8 +73,8 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                <td>{opd.sta_tus}</td>
                                <td>
                                
-                               <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                               <Button className="green_btn" variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button>
+                               <Button className="green_btn" onClick = {() => {
                                dispatch(DeleteOpdbillApiAction(opd.id))
                                alert("Your data has been deleted!")
                              window.location.reload(false)

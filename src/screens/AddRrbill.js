@@ -12,9 +12,9 @@ const AddRrbill = () => {
         <Header />
         <RrbillForm />
         
-        <div>
+        {/* <div>
              <Button variant='danger' size="lg"><Link to="/rr"> Cancel </Link></Button>
-        </div>
+        </div> */}
         
         <Footer />
 

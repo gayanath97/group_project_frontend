@@ -67,7 +67,7 @@ const employeeId= localStorage.getItem('userId');
                                <td>{expense.billability}</td>
                                <td>{expense.sta_tus}</td>
                                <td>
-                               <Button onClick={()=>{
+                               <Button className="green_btn" onClick={()=>{
                                  localStorage.setItem('extNoExp', expense.extensionNo);
                                  localStorage.setItem('expenseId',expense.id);
                                  console.log(localStorage.getItem('expenseId'))
@@ -75,8 +75,8 @@ const employeeId= localStorage.getItem('userId');
                                </td>
                                <td>
                                {/* <buttton> <Link to={`/edit-rr/${rr.id}`} >Update</Link></buttton>  */}
-                               <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                               <Button className="green_btn"  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button>
+                               <Button className="green_btn" onClick = {() => {
                                  dispatch(DeleteExpenseApiAction(expense.id))
                                  alert("Your data has been deleted!")
                                    window.location.reload(false)

@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import RrDetails from "../components/RrDetails";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
+import '../style/components/Form.css'
 
 const Rr = () => {
     return ( 
@@ -11,12 +12,13 @@ const Rr = () => {
        <Header />
       
        <br />
-       <h1>Reward & Recognitions</h1>
+       <h1 style={{textAlign:'center'}}>Reward & Recognitions</h1>
        <br />
-       <Button variant="info" ><Link to="/addrr">Add a claim</Link></Button>
+       <Button className="green_btn" variant="info" ><Link to="/addrr">Add a claim</Link></Button>
        <RrDetails />
        <br />
        
+       <br />
        <br />
        <Footer />
 

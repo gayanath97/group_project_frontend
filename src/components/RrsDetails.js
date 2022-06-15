@@ -2,14 +2,17 @@ import { Link} from "react-router-dom";
 import {useState,useEffect} from 'react';
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { GetRrApiAction,DeleteRrApiAction } from '../redux/action/rrAction';
+import { PostManagerRrApiDetails } from "../services/ManagerRrService";
 
 
 const RrsDetails = () => {
 
     const [search, setNewSearch] = useState("");
+    const navigate = useNavigate();
 
 const dispatch = useDispatch();
 const responseData = useSelector(state=>state.rrReducer.rrDetails)
@@ -83,8 +86,36 @@ useEffect(() => {
 
                                {/* <Button variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button> */}
 
-                               <Button  variant="warning"> Accept</Button>
-                               <Button  variant="danger"> Reject</Button>
+                               <Button  
+                               onClick={()=>{
+                                localStorage.setItem('rrId',rr.id);
+                                console.log(localStorage.getItem('rrId'));
+                                PostManagerRrApiDetails({
+                                    "rrId":localStorage.getItem('rrId') ,
+                                    "sta_tus": "accepted"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/rrs')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               variant="warning"> Accept</Button>
+                               <Button
+                               onClick={()=>{
+                                localStorage.setItem('rrId',rr.id);
+                                console.log(localStorage.getItem('rrId'));
+                                PostManagerRrApiDetails({
+                                    "rrId":localStorage.getItem('rrId') ,
+                                    "sta_tus": "rejected"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/rrs')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               variant="danger"> Reject</Button>
 
                                {/* <Button  onClick = {() => {
                                    dispatch(DeleteRrApiAction(rr.id))

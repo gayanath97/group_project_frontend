@@ -13,9 +13,9 @@ const AddExpensebill = () => {
         <Header />
         <ExpensebillForm />
         
-        <div>
+        {/* <div>
              <Button variant='danger' size="lg"><Link to="/expense"> Cancel </Link></Button>
-        </div>
+        </div> */}
         
         <Footer />
 

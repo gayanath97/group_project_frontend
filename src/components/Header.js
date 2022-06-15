@@ -17,7 +17,7 @@ const Header = () => {
     <Navbar.Brand href="https://www.persistent.com/">Persistent Systems Lanka (PVT) LTD</Navbar.Brand>
     <Nav className="me-auto">
     
-      <Nav.Link href="/">Home</Nav.Link>
+      {/* <Nav.Link href="/">Home</Nav.Link> */}
       <Nav.Link href="/expense">Expense</Nav.Link>
       <Nav.Link href="/rr">RR</Nav.Link>
       <Nav.Link href="/opd">OPD</Nav.Link>
@@ -29,7 +29,7 @@ const Header = () => {
     {/* <button><a style={{color:"red"}}>Persistent</a></button> */}
     <div style={{color:"red"}}>
     <Dropdown >
-  <Dropdown.Toggle variant="info" id="dropdown-basic">
+  <Dropdown.Toggle variant="info" id="dropdown-basic" style={{color:"red"}}>
   Profile
   </Dropdown.Toggle>
 

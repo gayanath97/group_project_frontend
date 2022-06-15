@@ -14,7 +14,7 @@ const AddRr = () => {
        
         <RrForm />
         
-        <Button variant='danger' size="lg"><Link to="/rr">Cancel</Link></Button>
+        {/* <Button variant='danger' size="lg"><Link to="/rr">Cancel</Link></Button> */}
         <br />
         <br />
         <Footer />

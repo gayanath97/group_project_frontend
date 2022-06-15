@@ -12,11 +12,13 @@ const Opd = () => {
         <Header />
       
         <br />
-        <h1>Opd Medical Expenses</h1>
+        <h1 style={{textAlign:'center'}}>Opd Medical Expenses</h1>
         <br />
-        <Button variant="info" ><Link to="/addopd">Add a claim</Link></Button>
+        <Button className="green_btn" variant="info" ><Link to="/addopd">Add a claim</Link></Button>
         <OpdDetails />
         
+        <br />
+        <br />
         <br />
         <Footer />
 

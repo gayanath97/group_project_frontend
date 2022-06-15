@@ -1,4 +1,4 @@
-import '../style/LoginStyles.css';
+import '../style/screens/Signup.css';
 import React from "react";
 import { Link,useNavigate } from 'react-router-dom';
 import pk from "../img/pk.jpg"
@@ -53,33 +53,18 @@ const Signup = () => {
 
 
     return (  
-      <div style={{
-        
-        // backgroundImage:`url(${pk})`,
-        backgroundSize:"cover",
-        
-        
-      }}>
-          <br />
-          <br /> <br /> <br />
-        <div style={{
-
-        width:400,
-        margin: "auto",
-        alignContent : "center",
-        // border: "dashed",
-        // borderColor:"red"
-          
-       }}>
+    
+         
+        <div className="main" >
        
-        {/* <form style={{backgroundColor:"orange"}}> */}
-        <form>
-        <h3>Sign Up</h3>
-        <div className="form-group">
-            <label>First name</label>
+        <p className="sign" align="center">Sign up</p>
+        <form className="form1">
+        
+        <div >
+            {/* <label>First name</label> */}
             <input 
             type="text" 
-            className="form-control" 
+            className="un" 
             placeholder="First name" 
             name = "firstName"
             value = {firstName}
@@ -87,10 +72,10 @@ const Signup = () => {
             />
         </div>
         <div className="form-group">
-            <label>Last name</label>
+            {/* <label>Last name</label> */}
             <input 
             type="text" 
-            className="form-control" 
+            className="un" 
             placeholder="Last name"
             name = "lastName"
             value = {lastName}
@@ -98,10 +83,10 @@ const Signup = () => {
             />
         </div>
         <div className="form-group">
-            <label>Email address</label>
+            {/* <label>Email address</label> */}
             <input 
             type="email" 
-            className="form-control" 
+            className="un" 
             placeholder="Enter email" 
             name = "email"
             value = {email}
@@ -109,10 +94,10 @@ const Signup = () => {
             />
         </div>
         <div className="form-group">
-            <label>UserName</label>
+            {/* <label>UserName</label> */}
             <input 
             type="text" 
-            className="form-control" 
+            className="un" 
             placeholder="Enter userName"
             name = "username"
             value = {username}
@@ -120,10 +105,10 @@ const Signup = () => {
             />
         </div>
         <div className="form-group">
-            <label>Password</label>
+            {/* <label>Password</label> */}
             <input 
             type="password" 
-            className="form-control" 
+            className="un" 
             placeholder="Enter password"
             name = "password"
             value = {password}
@@ -131,10 +116,10 @@ const Signup = () => {
             />
         </div> 
         <div className="form-group">
-            <label>Phone Number</label>
+            {/* <label>Phone Number</label> */}
             <input 
             type="text" 
-            className="form-control" 
+            className="un" 
             placeholder="Enter phone number"
             name = "phoneNumber"
             value = {phoneNumber}
@@ -142,7 +127,7 @@ const Signup = () => {
             />
         </div>
 
-        <div >
+        <div className='un'>
              <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="admin" name="role"  /> Admin
              <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="manager" name="role"  /> Manager
              <input onClick={(e)=>{arr=[];arr.push(e.target.value);console.log("arr____"+arr+",role___"+role)}} type="radio" value="user" name="role"  /> User
@@ -206,16 +191,15 @@ const Signup = () => {
           console.log(role)
           signUpUsers(e)
           }} 
-          type="submit" className="btn btn-primary btn-block" size="lg">Sign Up</Button>
-        <p className="forgot-password text-right">
+          type="submit" className="un" size="lg">Sign Up</Button>
+        <p className="un">
            <b style={{color:"red"}}>Already registered</b>  <Link to="/" style={{color:"black"}}>sign in?</Link>
         </p>
+       
     </form> 
     
     </div>  
-    <br /> 
-    <br />  <br /> <br /><br /> <br /> <br /><br /><br />    
-    </div>
+   
       );
 }
  

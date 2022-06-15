@@ -1,5 +1,6 @@
  
 // import '../style/LoginStyles.css';
+import '../style/screens/Login.css';
 import React from "react";
 import { Link,useNavigate } from 'react-router-dom';
 import pk from "../img/pk.jpg"
@@ -82,67 +83,29 @@ const Login = () => {
   // }, [])
 
     return (  
-      <div style={{
-        
-        // backgroundImage:`url(${pk})`,
-        backgroundSize:"cover",
-          
-      }}>
-          <br />
-          <br /> <br /> <br /><br /><br />
-          <br /><br /><br /><br /><br /><br /><br />
-        <div style={{
-
-        width:400,
-        margin: "auto",
-        alignContent : "center",
-        // border: "dashed",
-        // borderColor:"red"
-          
-       }}>
+      
+        <div className="main" style={{height:"450px"}}>
        
-        {/* <form style={{backgroundColor:"orange"}}> */}
-        <form >
-        <h3>Sign In</h3>
-
-        <div className="form-group">
-            <label>username</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            name = "username"
-            placeholder="username" 
-            value = {username}
-            onChange = {(e) => setusername(e.target.value)}
-            />
-        </div>
-
-        <div className="form-group">
-            <label>password</label>
-            <input 
-            type="text" 
-            className="form-control" 
-            name = "password"
-            placeholder="Password"
-            value = {password}
-            onChange = {(e) => setpassword(e.target.value)} 
-            />
-        </div> 
         
-        <Button onClick={(e)=>{signInUsers(e)}} type="submit" className="btn btn-primary btn-block" size="lg" >Sign In</Button>
-        <p className="forgot-password text-right">
+        <p className="sign" align="center">Sign in</p>
+        <form className="form1">
+        
+        <input class="un " type="text" align="center" placeholder="Username" value = {username}
+            onChange = {(e) => setusername(e.target.value)}/>
+      <input class="pass" type="password" align="center" placeholder="Password"  value = {password}
+            onChange = {(e) => setpassword(e.target.value)} /> 
+
+       
+        
+        <Button onClick={(e)=>{signInUsers(e)}} type="submit" className="un" size="lg" >Sign In</Button>
+        <p className="un">
            <b style={{color:"red"}}>Not registered</b>  <Link to="/signup" style={{color:"black"}}>sign Up?</Link>
         </p>
         
-        <p className="forgot-password text-right">
+        <p className="un">
            <b style={{color:"red"}}>Forgotten Password</b>  <Link to="/forgottenpassword" style={{color:"black"}}>verify?</Link>
         </p>
     </form> 
-    
-    </div> 
-
-    <br /> 
-    <br />  <br /> <br /><br /> <br /> <br /><br /><br />  
 
     </div>
       );

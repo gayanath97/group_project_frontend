@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios";
+import { Link } from "react-router-dom"
 
 import {PostExpensebillApiAction,UpdateExpensebillApiAction} from '../redux/action/expensebillAction'
 import { useDispatch, useSelector } from "react-redux";
@@ -87,9 +88,9 @@ const ExpensebillForm = () => {
 
     const title = ()=>{
         if(id){
-                return <h2 >Update Expense Bill</h2>
+                return <h2 style={{textAlign:'center'}}>Update Expense Bill</h2>
         }else{
-               return <h2>Add Expense Bill</h2>
+               return <h2 style={{textAlign:'center'}}>Add Expense Bill</h2>
         }
       }
 
@@ -125,20 +126,30 @@ const ExpensebillForm = () => {
         <div>
 
              {title()}
+             <div className="signup_container">
+          
+          <div className="signup_form_container">  
+         
+          <div className="left">
+                      <h1>Add your RR BILL details</h1>
+                      
+          </div>    
+          <div className="right"> 
 
-              <form>
+              <form className="container">
               
-              <div>
+              {/* <div>
                                  <label > EXPENSE ID No:{expenseId}</label>
                                  
-             </div>
+             </div> */}
 
               <div>
-                                 <label > ExtensionNo :</label>
+                                 {/* <label > ExtensionNo :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter extensionNo"
                                      name = "extensionNo"
+                                     className="input"
                                      value = {extensionNo}
                                      onChange = {(e) => setextensionNo(e.target.value)}
                                  >
@@ -146,11 +157,12 @@ const ExpensebillForm = () => {
              </div>
 
               <div>
-                                 <label > Particulars :</label>
+                                 {/* <label > Particulars :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter particulars"
                                      name = "particulars"
+                                     className="input"
                                      value = {particulars}
                                      onChange = {(e) => setparticulars(e.target.value)}
                                  >
@@ -158,24 +170,25 @@ const ExpensebillForm = () => {
              </div>
 
              <div>
-                                 <label > Amount :</label>
+                                 {/* <label > Amount :</label> */}
                                  <input
                                      type = "text"
                                      placeholder = "Enter amount"
                                      name = "amount"
+                                     className="input"
                                      value = {amount}
                                      onChange = {(e) => setamount(e.target.value)}
                                  >
                                  </input>
              </div>
              <div>
-             <input type="file" onChange={handleFileSelect}/>
+             <input className="input" type="file" onChange={handleFileSelect}/>
              </div>
              <br / >
              <br / >
         
              <div>
-             <Button onClick={
+             <Button className="green_btn" onClick={
                  (e)=>{
                      
                      saveOrUpdateExpenseBill(e);
@@ -183,11 +196,16 @@ const ExpensebillForm = () => {
                     }
                  } variant='warning' size="lg">Submit</Button>
              </div>
+             <div>
+             <Button className="green_btn" variant='danger' size="lg"><Link to="/expensebilldetails"> Cancel </Link></Button>
+        </div>
              <br />                      
             
 
               </form>
-
+              </div>
+        </div>
+        </div>
 
         </div>
 

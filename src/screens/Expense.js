@@ -13,12 +13,13 @@ const Expense = () => {
        <Header />
       
        <br />
-       <h1>Expenses</h1>
+       <h1 style={{textAlign:'center'}}>Expenses</h1>
        <br />
-       <Button variant="info" ><Link to="/addexpense">Add a claim</Link></Button>
+       <Button  className="green_btn" variant="info" ><Link to="/addexpense">Add a claim</Link></Button>
        <ExpenseDetails />
        <br />
        
+       <br />
        <br />
        <Footer />
 
