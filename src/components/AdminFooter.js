@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import '../style/components/Footer.css'
-// import {
-// Box,
-// } from "../style/FooterStyles";
 
-const Footer = () => {
+const AdminFooter = () => {
 	return (
 	  <div class='footer-dark mt-5'>
 		<footer>
@@ -14,10 +11,10 @@ const Footer = () => {
 				<h3>Types</h3>
 				<ul>
 				  <li>
-					<a href='#'>Expense</a>
+					<a href='#'>Employees</a>
 				  </li>
 				  <li>
-					<a href='#'>R&R</a>
+					<a href='#'>Reward</a>
 				  </li>
 				  <li>
 					<a href='#'>OPD</a>
@@ -65,4 +62,4 @@ const Footer = () => {
 	  </div>
 	)
   }
-  export default Footer
+  export default AdminFooter

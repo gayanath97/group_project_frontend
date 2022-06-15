@@ -75,7 +75,7 @@ useEffect(() => {
                                <td>{rr.location}</td>
                                <td>{rr.sta_tus}</td>
                                <td>
-                               <Button onClick={()=>{
+                               <Button className="green_btn" onClick={()=>{
                                    localStorage.setItem('extNo', rr.extensionNo);
                                    localStorage.setItem('rrId',rr.id);
                                    console.log(localStorage.getItem('rrId'))
@@ -86,7 +86,7 @@ useEffect(() => {
 
                                {/* <Button variant="warning"> <Link to={`/edit-rr/${rr.id}`} >Update</Link></Button> */}
 
-                               <Button  
+                               <Button  className="green_btn"
                                onClick={()=>{
                                 localStorage.setItem('rrId',rr.id);
                                 console.log(localStorage.getItem('rrId'));
@@ -101,7 +101,7 @@ useEffect(() => {
                                 })
                                }}
                                variant="warning"> Accept</Button>
-                               <Button
+                               <Button className="green_btn"
                                onClick={()=>{
                                 localStorage.setItem('rrId',rr.id);
                                 console.log(localStorage.getItem('rrId'));

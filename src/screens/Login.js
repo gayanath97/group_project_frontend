@@ -102,9 +102,9 @@ const Login = () => {
            <b style={{color:"red"}}>Not registered</b>  <Link to="/signup" style={{color:"black"}}>sign Up?</Link>
         </p>
         
-        <p className="un">
+        {/* <p className="un">
            <b style={{color:"red"}}>Forgotten Password</b>  <Link to="/forgottenpassword" style={{color:"black"}}>verify?</Link>
-        </p>
+        </p> */}
     </form> 
 
     </div>

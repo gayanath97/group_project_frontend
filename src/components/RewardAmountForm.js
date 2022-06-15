@@ -67,18 +67,25 @@ const RewardAmountForm = () => {
 
     const title = ()=>{
         if(id){
-                return <h2 >Update Reward</h2>
+                return <h2 style={{textAlign:"center"}}>Update Reward</h2>
         }else{
-               return <h2>Add Reward</h2>
+               return <h2 style={{textAlign:"center"}}>Add Reward</h2>
         }
     }
 
     return ( 
         <div>
              {title()}
-                
+             <div className="signup_container">
+          
+          <div className="signup_form_container">  
+          <div className="left">
+                      <h1>Add Reward</h1>
+                      
+          </div>    
+          <div className="right"> 
              
-                <form >
+                <form className="container">
     
                  <div>
                                      <label > ExpireDate :</label>
@@ -86,6 +93,7 @@ const RewardAmountForm = () => {
                                          type = "date"
                                          placeholder = "Enter ExpireDate"
                                          name = "expireDate"
+                                         className="input"
                                          value = {expireDate}
                                          onChange = {(e) => setexpireDate(e.target.value)}
                                      >
@@ -97,6 +105,7 @@ const RewardAmountForm = () => {
                                          type = "text"
                                          placeholder = "Enter amount"
                                          name = "amount"
+                                         className="input"
                                          value = {amount}
                                          onChange = {(e) => setamount(e.target.value)}
                                      >
@@ -108,6 +117,7 @@ const RewardAmountForm = () => {
                                          type = "date"
                                          placeholder = "Enter addedDate"
                                          name = "addedDate"
+                                         className="input"
                                          value = {addedDate}
                                          onChange = {(e) => setaddedDate(e.target.value)}
                                      >
@@ -115,11 +125,12 @@ const RewardAmountForm = () => {
                  </div>
 
                  <div>
-                                     <label > EmployeeId:</label>
+                                     <label > EmployeeId: </label>
                                      <input
                                          type = "text"
                                          placeholder = "Enter EmployeeId"
                                          name = "employee"
+                                         className="input"
                                          value = {employee}
                                          onChange = {(e) => setemployee(e.target.value)}
                                      >
@@ -134,13 +145,17 @@ const RewardAmountForm = () => {
                 
             
                  <div>
-                 <Button onClick={(e)=>{saveOrUpdateAmount(e)}} variant='warning' size="lg">Submit</Button>
+                 <Button className="green_btn"  onClick={(e)=>{saveOrUpdateAmount(e)}} variant='warning' size="lg">Submit</Button>
+                 <Button className="green_btn" variant="danger" size="lg"><Link  to="/rewardamount">Cansel</Link></Button>
                  </div>
                  <br />
                 
                  
                      
                  </form>
+                 </div>
+        </div>
+        </div>    
         </div>
      );
 }

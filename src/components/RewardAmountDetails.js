@@ -44,8 +44,8 @@ const isDeleteResponse = useSelector(state=>state.RewardamountReducer.isDeleteRe
                                <td>{reward.amount}</td>
                                <td>{reward.addedDate}</td>
                                <td>
-                               <Button variant="warning"> <Link to={`/edit-reward/${reward.rewardId}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                               <Button className="green_btn" variant="warning"> <Link to={`/edit-reward/${reward.rewardId}`} >Update</Link></Button>
+                               <Button className="green_btn"  onClick = {() => {
                                    dispatch(DeleteRewardAmountApiAction(reward.rewardId))
                                    alert("Your data has been deleted!")
                                    window.location.reload(false)

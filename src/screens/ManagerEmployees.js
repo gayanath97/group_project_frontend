@@ -1,15 +1,15 @@
-import OpdsDetails from "../components/OpdsDetails";
+import EmployeeDetails from "../components/EmployeeDetails";
 import ManagerHeader from '../components/ManagerHeader';
 import ManagerFooter from '../components/ManagerFooter';
 
-const Opds = () => {
+const ManagerEmployees = () => {
     return ( 
         <div>
             <ManagerHeader />
-        <OpdsDetails />
-        <ManagerFooter />
+            <EmployeeDetails />
+            <ManagerFooter />
         </div>
      );
 }
  
-export default Opds;
+export default ManagerEmployees;

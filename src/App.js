@@ -33,6 +33,8 @@ import RewardAmount from "./screens/RewardAmount";
 import OpdAmount from "./screens/OpdAmount";
 import AddReward from "./screens/AddReward";
 import AddOpdAmount from "./screens/AddOpdAmount";
+import ManagerEmployees from "./screens/ManagerEmployees";
+import AdminEmployees from "./screens/AdminEmployees";
 
 function App() {
 
@@ -88,6 +90,8 @@ function App() {
               <Route path="/expensebills" element={<Expensebills />} />
 
               <Route path="/employees" element={<Employees />} />
+              <Route path="/manageremployees" element={<ManagerEmployees />} />
+              <Route path="/adminemployees" element={<AdminEmployees />} />
 
               <Route path="/admin" element={<Admin />} />
               <Route path="/rewardamount" element={<RewardAmount />} />

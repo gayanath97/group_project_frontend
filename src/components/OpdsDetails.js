@@ -79,7 +79,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                
                                {/* <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button> */}
 
-                               <Button
+                               <Button className="green_btn"
                                onClick={()=>{
                                 localStorage.setItem('opdId',opd.id);
                                 console.log(localStorage.getItem('opdId'))
@@ -95,7 +95,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                }}
                                variant="warning"> Accept</Button>
 
-                               <Button
+                               <Button className="green_btn"
                                onClick={()=>{
                                 localStorage.setItem('opdId',opd.id);
                                 console.log(localStorage.getItem('opdId'))

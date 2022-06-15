@@ -20,7 +20,7 @@ const ClaimType = () => {
                          }}>
                 <br />
                 <div style={{textAlign:"center"}}>
-                <h1>{"Welcome "+localStorage.getItem("firstName")+" "+localStorage.getItem("lastName")}</h1>
+                <h1>{"Welcome User "+localStorage.getItem("firstName")+" "+localStorage.getItem("lastName")}</h1>
                 </div>
                
                 <div style={{textAlign:"center"}}>

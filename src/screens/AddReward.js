@@ -1,13 +1,16 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AdminFooter from "../components/AdminFooter";
+import AdminHeader from "../components/AdminHeader";
 import RewardAmountForm from "../components/RewardAmountForm";
 
 const AddReward = () => {
     return ( 
         <div>
-            
+            <AdminHeader />
             <RewardAmountForm />
-            <Link to="/rewardamount"><Button size="lg">Cansel</Button></Link>
+            {/* <Button className="green_btn" variant="warning" size="lg"><Link  to="/rewardamount">Cansel</Link></Button> */}
+            <AdminFooter />
         </div>
      );
 }

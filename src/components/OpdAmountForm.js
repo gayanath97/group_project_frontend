@@ -66,15 +66,24 @@ const OpdAmountForm = () => {
 
     const title = ()=>{
         if(id){
-                return <h2 >Update Opd Amount</h2>
+                return <h2 style={{textAlign:'center'}}>Update Opd Amount</h2>
         }else{
-               return <h2>Add Opd Amount</h2>
+               return <h2 style={{textAlign:'center'}}>Add Opd Amount</h2>
         }
     }
 
     return ( 
         <div>
              {title()}
+             <div className="signup_container">
+          
+          <div className="signup_form_container">  
+         
+          <div className="left">
+                      <h1>Opd Amount</h1>
+                      
+          </div>    
+          <div className="right"> 
                 
              
                 <form >
@@ -85,6 +94,7 @@ const OpdAmountForm = () => {
                                          type = "date"
                                          placeholder = "Enter ExpireDate"
                                          name = "expireDate"
+                                         className="input"
                                          value = {expireDate}
                                          onChange = {(e) => setexpireDate(e.target.value)}
                                      >
@@ -96,6 +106,7 @@ const OpdAmountForm = () => {
                                          type = "text"
                                          placeholder = "Enter amount"
                                          name = "amount"
+                                         className="input"
                                          value = {amount}
                                          onChange = {(e) => setamount(e.target.value)}
                                      >
@@ -119,6 +130,7 @@ const OpdAmountForm = () => {
                                          type = "text"
                                          placeholder = "Enter EmployeeId"
                                          name = "employee"
+                                         className="input"
                                          value = {employee}
                                          onChange = {(e) => setemployee(e.target.value)}
                                      >
@@ -133,13 +145,18 @@ const OpdAmountForm = () => {
                 
             
                  <div>
-                 <Button onClick={(e)=>{saveOrUpdateAmount(e)}} variant='warning' size="lg">Submit</Button>
+                 <Button className="green_btn" onClick={(e)=>{saveOrUpdateAmount(e)}} variant='warning' size="lg">Submit</Button>
                  </div>
-                 <br />
+                 <div>
+                 <Button className="green_btn" variant='danger' size="lg"><Link to="/opdamount">Cansel</Link></Button>
+                 </div>
                 
                  
                      
                  </form>
+                 </div>
+                 </div>
+                 </div>
         </div>
      );
 }

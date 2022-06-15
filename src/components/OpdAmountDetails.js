@@ -44,8 +44,8 @@ const isDeleteResponse = useSelector(state=>state.OpdamountReducer.isDeleteRespo
                                <td>{opd.amount}</td>
                                {/* <td>{opd.addedDate}</td> */}
                                <td>
-                               <Button variant="warning"> <Link to={`/edit-opdamount/${opd.id}`} >Update</Link></Button>
-                               <Button  onClick = {() => {
+                               <Button className="green_btn" variant="warning"> <Link to={`/edit-opdamount/${opd.id}`} >Update</Link></Button>
+                               <Button className="green_btn" onClick = {() => {
                                    dispatch(DeleteOpdAmountApiAction(opd.id))
                                    alert("Your data has been deleted!")
                                    window.location.reload(false)

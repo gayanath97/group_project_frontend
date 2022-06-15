@@ -81,7 +81,8 @@ useEffect(() => {
                                <td>{expense.billability}</td>
                                <td>{expense.sta_tus}</td>
                                <td>
-                               <Button onClick={()=>{
+                               <Button className="green_btn"
+                                onClick={()=>{
                                  localStorage.setItem('extNoExp', expense.extensionNo);
                                  localStorage.setItem('expenseId',expense.id);
                                  console.log(localStorage.getItem('expenseId'))
@@ -92,7 +93,7 @@ useEffect(() => {
 
                                {/* <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button> */}
 
-                               <Button  
+                               <Button className="green_btn" 
                                onClick={()=>{
                                 localStorage.setItem('expenseId',expense.id);
                                 console.log(localStorage.getItem('expenseId'))
@@ -109,7 +110,7 @@ useEffect(() => {
                                variant="warning"> Accept</Button>
 
 
-                               <Button  
+                               <Button  className="green_btn"
                                onClick={()=>{
                                 localStorage.setItem('expenseId',expense.id);
                                 console.log(localStorage.getItem('expenseId'))
