@@ -2,10 +2,11 @@ import { useState,useEffect } from "react";
 import OpdBillService from "../services/OpdBillService"
 import { Table,Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { GetOpdbillApiAction,DeleteOpdbillApiAction } from '../redux/action/opdAction';
-
+import {PostManagerOpdApiDetails} from "../services/ManagerOpdService"
 
 
 const OpdsDetails = () => {
@@ -18,6 +19,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
 
 
     const [search, setNewSearch] = useState("");
+    const navigate = useNavigate();
    
     useEffect(() => {
       dispatch(GetOpdbillApiAction());
@@ -77,8 +79,38 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                
                                {/* <Button variant="warning"> <Link to={`/edit-opdbill/${opd.id}`} >Update</Link></Button> */}
 
-                               <Button  variant="warning"> Accept</Button>
-                               <Button  variant="danger"> Reject</Button>
+                               <Button
+                               onClick={()=>{
+                                localStorage.setItem('opdId',opd.id);
+                                console.log(localStorage.getItem('opdId'))
+                                PostManagerOpdApiDetails({
+                                    "opdId":localStorage.getItem('opdId') ,
+                                    "sta_tus": "accepted"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/opds')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               variant="warning"> Accept</Button>
+
+                               <Button
+                               onClick={()=>{
+                                localStorage.setItem('opdId',opd.id);
+                                console.log(localStorage.getItem('opdId'))
+                                PostManagerOpdApiDetails({
+                                    "opdId":localStorage.getItem('opdId') ,
+                                    "sta_tus": "rejected"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/opds')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               
+                               variant="danger"> Reject</Button>
 
                                {/* <Button  onClick = {() => {
                                dispatch(DeleteOpdbillApiAction(opd.id))

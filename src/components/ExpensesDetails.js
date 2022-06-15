@@ -2,14 +2,17 @@ import { useState,useEffect } from "react";
 import ExpensesService from "../services/ExpensesService"
 import { Table,Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { GetExpenseApiAction,DeleteExpenseApiAction } from '../redux/action/expenseAction';
+import {PostManagerExpenseApiDetails} from "../services/ManagerExpenseService"
 
 
 const ExpensesDetails = () => {
 
   const [search, setNewSearch] = useState("");
+  const navigate = useNavigate();
 
 const dispatch = useDispatch();
 const responseData = useSelector(state=>state.expenseReducer.expenseDetails)
@@ -89,8 +92,39 @@ useEffect(() => {
 
                                {/* <Button  variant="warning"> <Link to={`/edit-expense/${expense.id}`} >Update</Link></Button> */}
 
-                               <Button  variant="warning"> Accept</Button>
-                               <Button  variant="danger"> Reject</Button>
+                               <Button  
+                               onClick={()=>{
+                                localStorage.setItem('expenseId',expense.id);
+                                console.log(localStorage.getItem('expenseId'))
+                                PostManagerExpenseApiDetails({
+                                    "expenseId":localStorage.getItem('expenseId') ,
+                                    "sta_tus": "accepted"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/expenses')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               variant="warning"> Accept</Button>
+
+
+                               <Button  
+                               onClick={()=>{
+                                localStorage.setItem('expenseId',expense.id);
+                                console.log(localStorage.getItem('expenseId'))
+                                PostManagerExpenseApiDetails({
+                                    "expenseId":localStorage.getItem('expenseId') ,
+                                    "sta_tus": "rejected"
+                                  })
+                                .then((res)=>{
+                                  //  console.log('Response Data is _____',res);
+                                    navigate('/expenses')
+                                    window.location.reload(false);
+                                })
+                               }}
+                               variant="danger"> Reject</Button>
+
 
                                {/* <Button  onClick = {() => {
                                  dispatch(DeleteExpenseApiAction(expense.id))
