@@ -63,6 +63,7 @@ const employeeId= localStorage.getItem('userId');
                                <td>{rr.location}</td>
                                <td>{rr.sta_tus}</td>
                                <td>
+                                {/* Rrbill */}
                                <Button className="green_btn" onClick={()=>{
                                    localStorage.setItem('extNo', rr.extensionNo);
                                    localStorage.setItem('rrId',rr.id);

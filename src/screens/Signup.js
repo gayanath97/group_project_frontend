@@ -1,7 +1,6 @@
 import '../style/screens/Signup.css';
 import React from "react";
 import { Link,useNavigate } from 'react-router-dom';
-import pk from "../img/pk.jpg"
 import { Button } from 'react-bootstrap';
 import {useState} from "react";
 import SignUpUserService from '../services/SignUpUserService';
@@ -18,6 +17,7 @@ const Signup = () => {
   const [phoneNumber,setphoneNumber]=useState("")
   const [role,setrole]=useState([])
   const [rol,setrol]=useState("")
+  const [message, setMessage] = useState("");
   
 
   var arr=[]
@@ -48,6 +48,23 @@ const Signup = () => {
         )
 
   }
+  const emailValidation = () => {
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (regEx.test(email)) {
+      setMessage("Email is Valid");
+      console.log(message);
+      return true;
+    } else if (!regEx.test(email) && email !== "") {
+      setMessage("Email is Not Valid");
+      console.log(message);
+      return false;
+    } else {
+      setMessage("");
+      console.log(message);
+      return false;
+    }
+  };
+  
 
   
 
@@ -90,7 +107,10 @@ const Signup = () => {
             placeholder="Enter email" 
             name = "email"
             value = {email}
-            onChange = {(e) => setemail(e.target.value)} 
+            onChange = {(e) =>{ 
+              
+                setemail(e.target.value)
+            }} 
             />
         </div>
         <div className="form-group">
@@ -186,10 +206,21 @@ const Signup = () => {
         
         
         <Button onClick={(e)=>{
-          role[0]=arr[0];
-          console.log(arr)
-          console.log(role)
-          signUpUsers(e)
+
+          if(emailValidation()){
+            role[0]=arr[0];
+            console.log(arr)
+            console.log(role)
+            signUpUsers(e)
+          }
+          else{
+            window.alert("Incorrect inputs");
+            // window.location.reload()
+          }
+          // role[0]=arr[0];
+          // console.log(arr)
+          // console.log(role)
+          // signUpUsers(e)
           }} 
           type="submit" className="un" size="lg">Sign Up</Button>
         <p className="un">
