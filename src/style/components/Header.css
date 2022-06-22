@@ -1,0 +1,13 @@
+.logo{
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.links{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.header{
+    background-color: #191930;
+}

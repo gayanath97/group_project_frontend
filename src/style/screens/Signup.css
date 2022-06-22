@@ -1,10 +1,13 @@
 body {
     background-color: #F3EBF6;
+   
     font-family: 'Ubuntu', sans-serif;
 }
 
 .main {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    background-color: #cebcfc;
+    opacity: 90%;
     width: 400px;
     height: 725px;
     margin: 7em auto;
@@ -22,7 +25,8 @@ body {
 
 .un {
 width: 76%;
-color: rgb(38, 50, 56);
+/* color: rgb(38, 50, 56); */
+color:white;
 font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;

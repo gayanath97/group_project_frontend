@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import pl from "../img/pl.jpg"
 import '../style/components/Form.css'
+import { Image, Card, Button, Row, Col } from "react-bootstrap";
+import OPD from '../img/7.jpeg';
+import EXPENSE from '../img/5.jpeg';
+import RR from '../img/6.jpeg';
 
 const ClaimType = () => {
 
@@ -32,6 +35,13 @@ const ClaimType = () => {
                 <br />
                 <br />
             <div style={{textAlign:"center"}}>
+
+             
+            
+
+
+
+
                 <div>
                 <Button className="green_btn" variant="warning" size="lg"><Link to="/expense">Expense Claim</Link></Button>      
                 </div>

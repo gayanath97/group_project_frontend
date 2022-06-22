@@ -83,6 +83,7 @@ const Login = () => {
   // }, [])
 
     return (  
+      <div >
       
         <div className="main" style={{height:"450px"}}>
        
@@ -107,6 +108,7 @@ const Login = () => {
         </p> */}
     </form> 
 
+    </div>
     </div>
       );
 }

@@ -33,7 +33,7 @@ const Opd = () => {
         <Header />
       
         <br />
-        <h1 style={{textAlign:'center'}}>Opd Medical Expenses</h1>
+        <h1 style={{textAlign:'center'}}>OPD Medical Expenses</h1>
         <br />
         <h5>Your Total opd amount is {amount}.</h5>
        <h5>It will expire on {expireDate}.</h5>

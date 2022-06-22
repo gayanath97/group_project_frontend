@@ -14,13 +14,13 @@ const Footer = () => {
 				<h3>Types</h3>
 				<ul>
 				  <li>
-					<a href='#'>Expense</a>
+					<a href='/expense'>Expense</a>
 				  </li>
 				  <li>
-					<a href='#'>R&R</a>
+					<a href='/rr'>R&R</a>
 				  </li>
 				  <li>
-					<a href='#'>OPD</a>
+					<a href='/opd'>OPD</a>
 				  </li>
 				</ul>
 			  </div>
@@ -45,10 +45,18 @@ const Footer = () => {
 				</p>
 			  </div>
 			  <div class='col item social'>
-				<a href='#'>
-				  <i class='icon ion-social-facebook'></i>
-				</a>
-				<a href='#'>
+
+             <img src="https://img.icons8.com/ios-filled/50/000000/twitter.png"/>
+			  <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png"/>
+			<img src="https://img.icons8.com/ios-filled/50/000000/linkedin-circled--v1.png"/>
+			 <img src="https://img.icons8.com/ios-filled/50/000000/snapchat--v1.png"/>
+			  
+				{/* <a href=''> */}
+				  {/* <i class='icon ion-social-facebook'></i> */}
+				
+				{/* </a> */}
+
+				{/* <a href='#'>
 				  <i class='icon ion-social-twitter'></i>
 				</a>
 				<a href='#'>
@@ -56,7 +64,7 @@ const Footer = () => {
 				</a>
 				<a href='#'>
 				  <i class='icon ion-social-instagram'></i>
-				</a>
+				</a> */}
 			  </div>
 			</div>
 			<p class='copyright'>Persistent Systems Lanka (PVT) LTD © 2022</p>

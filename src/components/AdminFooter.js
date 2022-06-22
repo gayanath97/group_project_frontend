@@ -42,7 +42,11 @@ const AdminFooter = () => {
 				</p>
 			  </div>
 			  <div class='col item social'>
-				<a href='#'>
+			  <img src="https://img.icons8.com/ios-filled/50/000000/twitter.png"/>
+			  <img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png"/>
+			<img src="https://img.icons8.com/ios-filled/50/000000/linkedin-circled--v1.png"/>
+			 <img src="https://img.icons8.com/ios-filled/50/000000/snapchat--v1.png"/>
+				{/* <a href='#'>
 				  <i class='icon ion-social-facebook'></i>
 				</a>
 				<a href='#'>
@@ -53,7 +57,7 @@ const AdminFooter = () => {
 				</a>
 				<a href='#'>
 				  <i class='icon ion-social-instagram'></i>
-				</a>
+				</a> */}
 			  </div>
 			</div>
 			<p class='copyright'>Persistent Systems Lanka (PVT) LTD © 2022</p>

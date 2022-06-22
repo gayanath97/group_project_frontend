@@ -1,10 +1,12 @@
 body {
     background-color: #F3EBF6;
+    /* background-color: #191970; */
     font-family: 'Ubuntu', sans-serif;
 }
 
 .main {
     background-color: #FFFFFF;
+    /* background-color: #191970; */
     width: 400px;
     height: 0px;
     margin: 7em auto;
@@ -13,6 +15,7 @@ body {
 }
 
 .sign {
+    /* background-color: #191970; */
     padding-top: 30px;
     color: #dd560d;
     font-family: 'Ubuntu', sans-serif;
