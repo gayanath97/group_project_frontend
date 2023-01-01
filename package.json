@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@coreui/coreui": "^4.1.6",
+    "@coreui/react": "^4.2.3",
+    "@coreui/react-chartjs": "^2.0.3",
     "@emotion/is-prop-valid": "^1.1.2",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
@@ -24,6 +27,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4",
     "zustand": "^3.7.0"
   },
