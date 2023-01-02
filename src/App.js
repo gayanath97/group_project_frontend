@@ -38,20 +38,7 @@ import AdminEmployees from "./screens/AdminEmployees";
 
 function App() {
 
-  // const [isLoggedin, setIsLoggeIn] = useState(false);
  
-  // useState(()=>{
-    
-  //   console.log(localStorage.getItem('userId'));
-  //   if(localStorage.getItem('userId')=='' || localStorage.getItem('userId')==null){
-  //     console.log('not');
-  //     setIsLoggeIn(false)
-  //   }else{
-  //     console.log("logged");
-  //     setIsLoggeIn(true)      
-  //   }
-   
-  // },[])
 
   return (
     <div>
