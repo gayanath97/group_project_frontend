@@ -80,13 +80,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
                                <Button  variant="warning"> Accept</Button>
                                <Button  variant="danger"> Reject</Button>
 
-                               {/* <Button  onClick = {() => {
-                               dispatch(DeleteOpdbillApiAction(opd.id))
-                               alert("Your data has been deleted!")
-                             window.location.reload(false)
-                               }
-                              }
-                                    style = {{marginLeft:"15px"}} variant="danger"> Delete</Button> */}
+                               
                                </td>
                         </tr>
 
