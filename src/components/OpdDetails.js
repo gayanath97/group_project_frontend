@@ -155,19 +155,7 @@ const OpdDetails = () => {
                       >
                         Update
                       </Button>
-                      {/* <Button
-                        className="green_btn"
-                        onClick={() => {
-                          dispatch(DeleteOpdbillApiAction(opd.id));
-                          alert("Your data has been deleted!");
-                          window.location.reload(false);
-                        }}
-                        style={{ marginLeft: "15px" }}
-                        variant="danger"
-                      >
-                        {" "}
-                        Delete
-                      </Button> */}
+                    
                       <Button
                         className="green_btn"
                         onClick={() => {
