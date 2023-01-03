@@ -41,11 +41,7 @@ const isDeleteResponse = useSelector(state=>state.opdReducer.isDeleteResponse)
     return ( 
 
         <div>
-          {/* <br />
-          Filter your opd bill by particulars:{" "}
-      <input type="text" value={search} onChange={handleSearchChange} />
-          <br />
-          <br /> */}
+          
 <Table striped borderd hover variant="light">
             <thead>
             <th>Employee Id Id</th>
