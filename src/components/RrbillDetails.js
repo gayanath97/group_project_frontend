@@ -25,16 +25,7 @@ const RrbillDetails = () => {
         }, [dispatch])
 
 
-    //  const handleSearchChange = (e)=>{
-    //     setNewSearch(e.target.value);
-    //    }
-
-  
-    //    const filtered = !search
-    //   ? rrbills
-    //   : rrbills.filter((e) =>
-    //         e.extensionNo.toLowerCase().includes(search.toLowerCase())
-    //     );
+    
 
    
    const rrId= localStorage.getItem('rrId');
